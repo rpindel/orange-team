@@ -18,24 +18,30 @@ db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
 
-## drop statements
-# cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
-# cursor.execute("DROP TABLE IF EXISTS supplier;")
-# cursor.execute("DROP TABLE IF EXISTS supplies;")
-# cursor.execute("DROP TABLE IF EXISTS supply_order;")
-# cursor.execute("DROP TABLE IF EXISTS supply_order_details;")
-# cursor.execute("DROP TABLE IF EXISTS wine;")
-# cursor.execute("DROP TABLE IF EXISTS batch;")
-# cursor.execute("DROP TABLE IF EXISTS wine_order;")
-# cursor.execute("DROP TABLE IF EXISTS wine_order_details;")
-# cursor.execute("DROP TABLE IF EXISTS wine_distrbutor_details;")
-# cursor.execute("DROP TABLE IF EXISTS distributor;")
-# cursor.execute("DROP TABLE IF EXISTS employee;")
-# cursor.execute("DROP TABLE IF EXISTS employe_alternate;")
-# cursor.execute("DROP TABLE IF EXISTS employee_time_worked;")
-# cursor.execute("DROP TABLE IF EXISTS zip_lookup;")
-# cursor.execute("DROP TABLE IF EXISTS department;")
-# cursor.execute("DROP TABLE IF EXISTS position;")
+def drop_tables():
+    # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
+    drop_T = 'DROP TABLE IF EXISTS '
+    drop_list = [
+        "supplier;",
+        "supplies;",
+        "supply_order;",
+        "supply_order_details;",
+        "wine;",
+        "batch;",
+        "wine_order;",
+        "wine_order_details;",
+        "wine_distributor_details;",
+        "distributor;",
+        "employee;",
+        "employee_alternate;",
+        "employee_time_worked;",
+        "zip_lookup;",
+        "department;",
+        "positions;"
+    ]
+    for table in drop_list:
+        cursor.execute(drop_T + table)
+
 
 # create new user for bacchus winery
 # cursor.execute("CREATE USER 'bacchus_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqltest';")
