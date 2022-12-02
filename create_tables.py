@@ -6,7 +6,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 config = {
-    "user" : "root",
+    "user" : "bacchus_user",
     "password" : "mysqltest",
     "host" : "127.0.0.1",
     "database" : "bacchus_wine",
@@ -18,7 +18,7 @@ db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
 ## drop statements
-cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
+#cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
 ##cursor.execute("DROP TABLE IF EXISTS supplier;")
 ##cursor.execute("DROP TABLE IF EXISTS supplies;")
 ##cursor.execute("DROP TABLE IF EXISTS supply_order;")
@@ -37,10 +37,10 @@ cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
 ##cursor.execute("DROP TABLE IF EXISTS position;")
 
 ## create new user for bacchus winery
-cursor.execute("CREATE USER 'bacchus_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqltest';")
+#cursor.execute("CREATE USER 'bacchus_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqltest';")
 
 ## grant all privileges to the bacchus_wine database to bacchus_user on localhost
-cursor.execute("GRANT ALL PRIVILEGES ON bacchus_wine.* TO 'bacchus_user'@'localhost';")
+#cursor.execute("GRANT ALL PRIVILEGES ON bacchus_wine.* TO 'bacchus_user'@'localhost';")
 
 ## create supplier table
 cursor.execute("CREATE TABLE supplier (Supplier_ID INT NOT NULL, Name VARCHAR(45) NOT NULL, Street_Address_1 VARCHAR(35) NOT NULL, Street_Address_2 VARCHAR(35), Zip INT NOT NULL, Contact_First_Name VARCHAR(25) NOT NULL, Contact_Last_Name VARCHAR(25) NOT NULL, Phone_Number VARCHAR(15) NOT NULL, Email_Address VARCHAR(45), Order_Method ENUM('Phone', 'Post', 'Online'), Order_Method_Details VARCHAR(45), Active BIT(1) NOT NULL, PRIMARY KEY(Supplier_ID));")
