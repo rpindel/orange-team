@@ -98,6 +98,8 @@ cursor.execute("ALTER TABLE employee ADD CONSTRAINT fk_employee_department FOREI
 cursor.execute("ALTER TABLE employee ADD CONSTRAINT fk_employee_positions FOREIGN KEY(Position_ID) REFERENCES positions(Position_ID);") 
 cursor.execute("ALTER TABLE employee_alternate ADD CONSTRAINT fk_employee_alternate_employee FOREIGN KEY(Employee_ID) REFERENCES employee(Employee_ID);")
 cursor.execute("ALTER TABLE employee_time_worked ADD CONSTRAINT fk_employee_time_worked_employee FOREIGN KEY(Employee_ID) REFERENCES employee(Employee_ID);")
-
+cursor.execute("ALTER TABLE supplier ADD CONSTRAINT fk_supplier_zip_lookup FOREIGN KEY(Zip) REFERENCES zip_lookup(Zip);")
+cursor.execute("ALTER TABLE distributor ADD CONSTRAINT fk_distributor_zip_lookup FOREIGN KEY(Zip) REFERENCES zip_lookup(Zip);")
+cursor.execute("ALTER TABLE employee_alternate ADD CONSTRAINT fk_employee_alternate_zip_lookup FOREIGN KEY(Zip) REFERENCES zip_lookup(Zip);")
 
 db.close()
