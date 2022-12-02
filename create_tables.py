@@ -1,22 +1,22 @@
 '''
-Orange Group
+Orange Group CSD-310 2022
 '''
 
 import mysql.connector
 from mysql.connector import errorcode
 
-config = {
-    "user": "bacchus_user",
-    "password": "mysqltest",
-    "host": "127.0.0.1",
-    "database": "bacchus_wine",
-    "raise_on_warnings": True
-}
 
+config = {
+    "user" : "bacchus_user",
+    "password" : "mysqltest",
+    "host" : "127.0.0.1",
+    "database" : "bacchus_wine",
+    "raise_on_warnings" : True
+    }
+    
 db = mysql.connector.connect(**config)
 
 cursor = db.cursor()
-
 
 def drop_tables():
     # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
