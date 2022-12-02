@@ -65,7 +65,7 @@ def create_tables():
         ("CREATE TABLE supply_order (Supply_Order_ID INT NOT NULL, Total_Cost DECIMAL(10,2) NOT NULL, "
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
          "Order_Tracking_Number VARCHAR(30) NOT NULL, Order_Delivery_Carrier VARCHAR(10), "
-         "Order_Estimated_Delivery_Date DATETIME, Order_Actual_Delivery_Date DATETIME NOT NULL, "
+         "Order_Estimated_Delivery_Date DATE, Order_Actual_Delivery_Date DATETIME NOT NULL, "
          "Supply_ID INT NOT NULL, Supplier_ID INT NOT NULL, PRIMARY KEY(Supply_Order_ID));"),
         # create supply_order_details table
         ("CREATE TABLE supply_order_details (Supply_Order_ID INT NOT NULL, Supply_ID INT NOT NULL, "
@@ -75,12 +75,12 @@ def create_tables():
          "Style ENUM('Merlot', 'Cabernet', 'Chablis', 'Chardonnay') NOT NULL, "
          "Onhand_Quantity INT NOT NULL, Batch_ID INT NOT NULL, PRIMARY KEY(Wine_ID));"),
         # create batch table
-        ("CREATE TABLE batch (Batch_ID INT NOT NULL, Bottled_Date DATETIME, Expiration_Date DATETIME NOT NULL, "
+        ("CREATE TABLE batch (Batch_ID INT NOT NULL, Bottled_Date DATE, Expiration_Date DATE NOT NULL, "
          "Quantity INT NOT NULL, Wine_ID INT NOT NULL, PRIMARY KEY(Batch_ID));"),
         # create wine_order table
         ("CREATE TABLE wine_order (Wine_Order_ID INT NOT NULL, Total_Cost DECIMAL(10, 2) NOT NULL, "
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
-         "Order_Estimated_Delivery_Date DATETIME, Order_Actual_Delivery_Date DATETIME NOT NULL, "
+         "Order_Estimated_Delivery_Date DATE, Order_Actual_Delivery_Date DATETIME NOT NULL, "
          "Wine_ID INT NOT NULL, Distributor_ID INT NOT NULL, PRIMARY KEY(Wine_Order_ID));"),
         # create wine_order_details table
         ("CREATE TABLE wine_order_details (Wine_Order_ID INT NOT NULL, Wine_ID INT NOT NULL, "
