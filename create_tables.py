@@ -150,6 +150,7 @@ def foreign_key_constraints():
         "ALTER TABLE supplier ADD CONSTRAINT fk_supplier_zip_lookup FOREIGN KEY(Zip) REFERENCES zip_lookup(Zip);",
         "ALTER TABLE distributor ADD CONSTRAINT fk_distributor_zip_lookup FOREIGN KEY(Zip) REFERENCES zip_lookup(Zip);",
         ("ALTER TABLE employee_alternate ADD CONSTRAINT fk_employee_alternate_zip_lookup FOREIGN KEY(Zip) "
-         "REFERENCES zip_lookup(Zip);")    ]
+         "REFERENCES zip_lookup(Zip);")
+    ]
     for fk in fk_constraints:
         cursor.execute(fk)
