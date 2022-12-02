@@ -26,7 +26,22 @@ def fill_tables():
             ]
     mycursor.executemany(supplier, values)
     mydb.commit()
-    print(mycursor.rowcount, "was inserted")
+    print(mycursor.rowcount, "was inserted into supplier table")
+
+    # Supplies table
+    supplies = ("INSERT INTO supplies (supply_ID, name, description, onhand_quantity, unit_price, Supplier_ID,"
+                "Supply_order_ID)"
+                "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+    values = [
+        (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1, 0),
+        (2, 'Bottles', '750 ML', 254, 1.20, 1, 0),
+        (3, 'Labels', 'Display product on Bottle', 2455, 0.05, 4, 0),
+        (4, 'Tubing', 'For Processing', 25, 25, 3, 0),
+        (5, 'Vats', 'For Fermenting', 12, 2500, 3, 0),
+        (6, 'Boxes', '6 bottle size', 1258, 2, 4, 0),
+    ]
+    mycursor.executemany(supplies, values)
+    mydb.commit()
+    print(mycursor.rowcount, "was inserted into supplier table")
 
 
-fill_tables()
