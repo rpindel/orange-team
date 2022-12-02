@@ -40,7 +40,7 @@ cursor.execute("CREATE TABLE wine (Wine_ID INT NOT NULL, Name VARCHAR(45) NOT NU
 
 
 ## create batch table
-cursor.execute("CREATE TABLE batch (Batch_ID INT NOT NULL, Bottled_Date DATETIME, Expiration_Date DATETIME NOT NULL, Quantity INT NOT NULL, Wine_ID INT NOT NULL, PRIMARY KEY(Batch_ID));")
+cursor.execute("CREATE TABLE batch (Batch_ID INT NOT NULL, Bottled_Date DATETIME, Expiration_Date DATE NOT NULL, Quantity INT NOT NULL, Wine_ID INT NOT NULL, PRIMARY KEY(Batch_ID));")
 
 
 ## create wine_order table
