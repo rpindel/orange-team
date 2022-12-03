@@ -43,6 +43,7 @@ def fill_tables():
     mycursor.executemany(supplies, values)
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supplies table")
+
     # Supply_order_details table
     supply_order_details = ("INSERT INTO supply_order_details (supply_order_ID, Supply_ID, quantity_ordered)"
                             "VALUES (%s, %s, %s)")
@@ -77,7 +78,7 @@ def fill_tables():
     # mydb.commit()
     # print(mycursor.rowcount, "was inserted into supply order table")
 
-    # Supplies table
+    # Wine table
     wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id) VALUES (%s, %s, %s, %s, %s)"
     values = [
         (1, 'Dark and Red', 'Merlot', 300, 2022010101),
@@ -90,3 +91,18 @@ def fill_tables():
     mycursor.executemany(wine, values)
     mydb.commit()
     print(mycursor.rowcount, " rows were inserted into the Wine table")
+
+ # Batch table
+    batch = "INSERT INTO batch (Batch_ID, Bottled_date, Expiration_Date, Quantity, Wine_id) " \
+            "VALUES (%s, %s, %s, %s, %s)"
+    values = [
+        (2022010101, '2022-08-01', '2024-08-01', 200, 1),
+        (2022010102, '2022-10-01', '2023-10-01', 200, 2),
+        (2022010103, '2022-02-02', '2023-02-02', 200, 3),
+        (2022010104, '2022-02-02', '2023-02-02', 200, 4),
+        (2022042701, '2022-03-01', '2023-03-01', 100, 5),
+        (2022021401, '2022-12-01', '2024-12-01', 100, 6)
+    ]
+    mycursor.executemany(batch, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the Batch table")
