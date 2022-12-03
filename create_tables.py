@@ -5,22 +5,22 @@ Orange Group CSD-310 2022
 import mysql.connector
 from mysql.connector import errorcode
 
-
 config = {
-    "user" : "bacchus_user",
-    "password" : "mysqltest",
-    "host" : "127.0.0.1",
-    "database" : "bacchus_wine",
-    "raise_on_warnings" : True
-    }
-    
+    "user": "bacchus_user",
+    "password": "mysqltest",
+    "host": "127.0.0.1",
+    "database": "bacchus_wine",
+    "raise_on_warnings": True
+}
+
 db = mysql.connector.connect(**config)
 
 cursor = db.cursor()
 
+
 def drop_tables():
     # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
-    drop_T = 'DROP TABLE IF EXISTS '
+    drop_t  = "DROP TABLE IF EXISTS "
     drop_list = [
         "supplier;",
         "supplies;",
@@ -40,7 +40,7 @@ def drop_tables():
         "positions;"
     ]
     for table in drop_list:
-        cursor.execute(drop_T + table)
+        cursor.execute(drop_t + table)
 
 
 # create new user for bacchus winery
