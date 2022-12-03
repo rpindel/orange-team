@@ -73,7 +73,8 @@ def create_tables():
         # create wine table
         ("CREATE TABLE wine (Wine_ID INT NOT NULL, Name VARCHAR(45) NOT NULL, "
          "Style ENUM('Merlot', 'Cabernet', 'Chablis', 'Chardonnay') NOT NULL, "
-         "Onhand_Quantity INT NOT NULL, Batch_ID INT NOT NULL, PRIMARY KEY(Wine_ID));"),
+         "Onhand_Quantity INT NOT NULL, Batch_ID INT NOT NULL, Cost DECIMAL(6, 2) NOT NULL, "
+         "PRIMARY KEY(Wine_ID));"),
         # create batch table
         ("CREATE TABLE batch (Batch_ID INT NOT NULL, Bottled_Date DATE, Expiration_Date DATE NOT NULL, "
          "Quantity INT NOT NULL, Wine_ID INT NOT NULL, PRIMARY KEY(Batch_ID));"),
