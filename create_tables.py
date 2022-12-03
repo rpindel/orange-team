@@ -66,7 +66,7 @@ def create_tables():
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
          "Order_Tracking_Number VARCHAR(30) NOT NULL, Order_Delivery_Carrier VARCHAR(10), "
          "Order_Estimated_Delivery_Date DATE, Order_Actual_Delivery_Date DATETIME NOT NULL, "
-         "Supply_ID INT NOT NULL, Supplier_ID INT NOT NULL, PRIMARY KEY(Supply_Order_ID));"),
+         "Supplier_ID INT NOT NULL, PRIMARY KEY(Supply_Order_ID));"),
         # create supply_order_details table
         ("CREATE TABLE supply_order_details (Supply_Order_ID INT NOT NULL, Supply_ID INT NOT NULL, "
          "Quantity_Ordered INT NOT NULL, PRIMARY KEY(Supply_Order_ID, Supply_ID));"),
@@ -82,7 +82,7 @@ def create_tables():
         ("CREATE TABLE wine_order (Wine_Order_ID INT NOT NULL, Total_Cost DECIMAL(10, 2) NOT NULL, "
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
          "Order_Estimated_Delivery_Date DATE, Order_Actual_Delivery_Date DATETIME NOT NULL, "
-         "Wine_ID INT NOT NULL, Distributor_ID INT NOT NULL, PRIMARY KEY(Wine_Order_ID));"),
+         "Distributor_ID INT NOT NULL, PRIMARY KEY(Wine_Order_ID));"),
         # create wine_order_details table
         ("CREATE TABLE wine_order_details (Wine_Order_ID INT NOT NULL, Wine_ID INT NOT NULL, "
          "Quantity_Ordered INT NOT NULL, PRIMARY KEY(Wine_Order_ID, Wine_ID));"),
@@ -94,7 +94,7 @@ def create_tables():
          "Street_Address_1 VARCHAR(35) NOT NULL, Street_Address_2 VARCHAR(35), Zip INT NOT NULL, "
          "Contact_First_Name VARCHAR(25) NOT NULL, Contact_Last_Name VARCHAR(25) NOT NULL, "
          "Phone_Number VARCHAR(15) NOT NULL, Email_Address VARCHAR(45), Active BIT(1) NOT NULL, "
-         "Wine_ID INT NOT NULL, Wine_Order_ID INT NOT NULL, PRIMARY KEY(Distributor_ID));"),
+         "PRIMARY KEY(Distributor_ID));"),
         # create employee table
         ("CREATE TABLE employee (Employee_ID INT NOT NULL, First_Name VARCHAR(25) NOT NULL, "
          "Last_Name VARCHAR(25) NOT NULL, Hire_Date DATE NOT NULL, Start_Date DATE, Active BIT(1) NOT NULL, "
@@ -125,8 +125,6 @@ def create_tables():
 # create all foreign key constraints after all tables are created
 def foreign_key_constraints():
     fk_constraints = [
-        ("ALTER TABLE supply_order ADD CONSTRAINT fk_supply_order_supplies FOREIGN KEY(Supply_ID)"
-         "REFERENCES supplies(Supply_ID);"),
         ("ALTER TABLE supply_order ADD CONSTRAINT fk_supply_order_supplier FOREIGN KEY(Supplier_ID) "
          "REFERENCES supplier(Supplier_ID);"),
         ("ALTER TABLE supplies ADD CONSTRAINT fk_supplies_supplier FOREIGN KEY(Supplier_ID)"
@@ -135,12 +133,8 @@ def foreign_key_constraints():
          "REFERENCES supply_order(Supply_Order_ID);"),
         "ALTER TABLE wine ADD CONSTRAINT fk_wine_batch FOREIGN KEY(Batch_ID) REFERENCES batch(Batch_ID);",
         "ALTER TABLE batch ADD CONSTRAINT fk_batch_wine FOREIGN KEY(Wine_ID) REFERENCES wine(Wine_ID);",
-        "ALTER TABLE wine_order ADD CONSTRAINT fk_wine_order_wine FOREIGN KEY(Wine_ID) REFERENCES wine(Wine_ID);",
         ("ALTER TABLE wine_order ADD CONSTRAINT fk_wine_order_distributor FOREIGN KEY(Distributor_ID) "
          "REFERENCES distributor(Distributor_ID);"),
-        "ALTER TABLE distributor ADD CONSTRAINT fk_distributor_wine FOREIGN KEY(Wine_ID) REFERENCES wine(Wine_ID);",
-        ("ALTER TABLE distributor ADD CONSTRAINT fk_distributor_wine_order FOREIGN KEY(Wine_Order_ID) "
-         "REFERENCES wine_order(Wine_Order_ID);"),
         ("ALTER TABLE employee ADD CONSTRAINT fk_employee_department FOREIGN KEY(Department_ID) "
          "REFERENCES department(Department_ID);"),
         ("ALTER TABLE employee ADD CONSTRAINT fk_employee_positions FOREIGN KEY(Position_ID) "
