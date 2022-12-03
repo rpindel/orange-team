@@ -5,22 +5,22 @@ Orange Group CSD-310 2022
 import mysql.connector
 from mysql.connector import errorcode
 
-
 config = {
-    "user" : "bacchus_user",
-    "password" : "mysqltest",
-    "host" : "127.0.0.1",
-    "database" : "bacchus_wine",
-    "raise_on_warnings" : True
-    }
-    
+    "user": "bacchus_user",
+    "password": "mysqltest",
+    "host": "127.0.0.1",
+    "database": "bacchus_wine",
+    "raise_on_warnings": True
+}
+
 db = mysql.connector.connect(**config)
 
 cursor = db.cursor()
 
+
 def drop_tables():
     # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
-    drop_T = 'DROP TABLE IF EXISTS '
+    drop_t  = "DROP TABLE IF EXISTS "
     drop_list = [
         "supplier;",
         "supplies;",
@@ -40,7 +40,7 @@ def drop_tables():
         "positions;"
     ]
     for table in drop_list:
-        cursor.execute(drop_T + table)
+        cursor.execute(drop_t + table)
 
 
 # create new user for bacchus winery
@@ -102,7 +102,8 @@ def create_tables():
         # create employee_alternate table
         ("CREATE TABLE employee_alternate (Street_Address_1 VARCHAR(35) NOT NULL, Street_Address_2 VARCHAR(35), "
          "Zip INT NOT NULL, Phone_Number VARCHAR(15) NOT NULL, Email_Address VARCHAR(45), Term_Date DATE, "
-         "Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT NOT NULL UNIQUE, DOB DATE, Employee_ID INT NOT NULL);"),
+         "Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT NOT NULL UNIQUE, DOB DATE, "
+         "Employee_ID INT NOT NULL);"),
         # create employee_time_worked table
         ("CREATE TABLE employee_time_worked (Date DATE NOT NULL, Clock_In_Shift TIME NOT NULL, "
          "Clock_Out_Shift TIME NOT NULL, Clock_Out_Break TIME, Clock_In_Break TIME, Clock_Out_Lunch TIME, "
