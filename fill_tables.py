@@ -23,7 +23,7 @@ def fill_tables():
          'blas@breakthru.com', 'post', 'prefers correspondence by mail', 1),
         (4, 'Young\'s market', '1 Young CIR', 'Suite 100', 56489, 'George', 'Young', '321-456-9870',
          'gyoung@youngsmarket.com', 'online', 'I\'m not really sure what should be here', 1),
-            ]
+    ]
     mycursor.executemany(supplier, values)
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supplier table")
@@ -59,21 +59,34 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supply order details table")
     # Im not sure how to go about calculating sum of quantity from supply_order_details
     # and unit price from supplies I will double back to this
- #Supply_order table
-   # supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
+    # Supply_order table
+    # supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
     #                "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
-     #               " Order_Actual_Delivery_Date, Supply_ID, Supplier_ID)"
-      #              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+    #               " Order_Actual_Delivery_Date, Supply_ID, Supplier_ID)"
+    #              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-    #values = [
+    # values = [
     #    (1111, SUM(bacchus_wine.), 'Environment Friendly', 1548, 0.25, 1, 1111),
     #    (2222, '', '750 ML', 254, 1.20, 1, 2222),
     #    (3333, '', 'Display product on Bottle', 2455, 0.05, 4, 3333),
     #    (4444, '', 'For Processing', 25, 25, 3, 4444),
     #    (5555, '', 'For Fermenting', 12, 2500, 3, 5555),
     #   (6666, '', '6 bottle size', 1258, 2, 4, 6666),
-     #]
-    #mycursor.executemany(supply_order, values)
-    #mydb.commit()
-    #print(mycursor.rowcount, "was inserted into supply order table")
+    # ]
+    # mycursor.executemany(supply_order, values)
+    # mydb.commit()
+    # print(mycursor.rowcount, "was inserted into supply order table")
 
+    # Supplies table
+    wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id) VALUES (%s, %s, %s, %s, %s)"
+    values = [
+        (1, 'Dark and Red', 'Merlot', 300, 2022010101),
+        (2, 'Crimson Silk', 'Cabernet', 257, 2022010102),
+        (3, 'Bright and Bold', 'Chablis', 124, 2022010103),
+        (4, 'Clean and Smooth', 'Chardonnay', 272, 2022010104),
+        (5, 'Rare Velvet', 'Chardonnay', 97, 2022042701),
+        (6, 'Anniversary Cask', 'Merlot', 37, 2022021401)
+    ]
+    mycursor.executemany(wine, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the Wine table")
