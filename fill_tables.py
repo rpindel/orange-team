@@ -26,7 +26,7 @@ def fill_tables():
             ]
     mycursor.executemany(supplier, values)
     mydb.commit()
-    print(mycursor.rowcount, "was inserted into supplier table")
+    print(mycursor.rowcount, "rows were inserted into supplier table")
 
     # Supplies table
     supplies = ("INSERT INTO supplies (supply_ID, name, description, onhand_quantity, unit_price, Supplier_ID,"
@@ -42,7 +42,7 @@ def fill_tables():
     ]
     mycursor.executemany(supplies, values)
     mydb.commit()
-    print(mycursor.rowcount, "was inserted into supplies table")
+    print(mycursor.rowcount, "rows were inserted into supplies table")
     # Supply_order_details table
     supply_order_details = ("INSERT INTO supply_order_details (supply_order_ID, Supply_ID, quantity_ordered)"
                             "VALUES (%s, %s, %s)")
@@ -57,21 +57,22 @@ def fill_tables():
     mycursor.executemany(supply_order_details, values)
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supply order details table")
-# Supply_order table
-    #supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
-     #               "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
-      #              " Order_Actual_Delivery_Date, Supply_ID, Supplier_ID)"
-       #             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
+    # Im not sure how to go about calculating sum of quantity from supply_order_details
+    # and unit price from supplies I will double back to this
+ #Supply_order table
+   # supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
+    #                "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
+     #               " Order_Actual_Delivery_Date, Supply_ID, Supplier_ID)"
+      #              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-   # values = [
-    #    (1111, '', 'Environment Friendly', 1548, 0.25, 1, 1111),
-
-     #   (2222, '', '750 ML', 254, 1.20, 1, 2222),
-      #  (3333, '', 'Display product on Bottle', 2455, 0.05, 4, 3333),
-       # (4444, '', 'For Processing', 25, 25, 3, 4444),
-     #   (5555, '', 'For Fermenting', 12, 2500, 3, 5555),
-     #   (6666, '', '6 bottle size', 1258, 2, 4, 6666),
-    #]
+    #values = [
+    #    (1111, SUM(bacchus_wine.), 'Environment Friendly', 1548, 0.25, 1, 1111),
+    #    (2222, '', '750 ML', 254, 1.20, 1, 2222),
+    #    (3333, '', 'Display product on Bottle', 2455, 0.05, 4, 3333),
+    #    (4444, '', 'For Processing', 25, 25, 3, 4444),
+    #    (5555, '', 'For Fermenting', 12, 2500, 3, 5555),
+    #   (6666, '', '6 bottle size', 1258, 2, 4, 6666),
+     #]
     #mycursor.executemany(supply_order, values)
     #mydb.commit()
     #print(mycursor.rowcount, "was inserted into supply order table")
