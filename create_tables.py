@@ -102,7 +102,8 @@ def create_tables():
         # create employee_alternate table
         ("CREATE TABLE employee_alternate (Street_Address_1 VARCHAR(35) NOT NULL, Street_Address_2 VARCHAR(35), "
          "Zip INT NOT NULL, Phone_Number VARCHAR(15) NOT NULL, Email_Address VARCHAR(45), Term_Date DATE, "
-         "Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT NOT NULL, DOB DATE, Employee_ID INT NOT NULL);"),
+         "Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT NOT NULL UNIQUE, DOB DATE, "
+         "Employee_ID INT NOT NULL);"),
         # create employee_time_worked table
         ("CREATE TABLE employee_time_worked (Date DATE NOT NULL, Clock_In_Shift TIME NOT NULL, "
          "Clock_Out_Shift TIME NOT NULL, Clock_Out_Break TIME, Clock_In_Break TIME, Clock_Out_Lunch TIME, "
