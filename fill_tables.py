@@ -79,14 +79,14 @@ def fill_tables():
     # print(mycursor.rowcount, "was inserted into supply order table")
 
     # Wine table
-    wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id) VALUES (%s, %s, %s, %s, %s)"
+    wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
     values = [
-        (1, 'Dark and Red', 'Merlot', 300, 2022010101),
-        (2, 'Crimson Silk', 'Cabernet', 257, 2022010102),
-        (3, 'Bright and Bold', 'Chablis', 124, 2022010103),
-        (4, 'Clean and Smooth', 'Chardonnay', 272, 2022010104),
-        (5, 'Rare Velvet', 'Chardonnay', 97, 2022042701),
-        (6, 'Anniversary Cask', 'Merlot', 37, 2022021401)
+        (1, 'Dark and Red', 'Merlot', 300, 2022010101, 15.00),
+        (2, 'Crimson Silk', 'Cabernet', 257, 2022010102, 15.00),
+        (3, 'Bright and Bold', 'Chablis', 124, 2022010103, 12.00),
+        (4, 'Clean and Smooth', 'Chardonnay', 272, 2022010104, 8.00),
+        (5, 'Rare Velvet', 'Chardonnay', 90, 2022042701, 25.00),
+        (6, 'Anniversary Cask', 'Merlot', 37, 2022021401, 40.00)
     ]
     mycursor.executemany(wine, values)
     mydb.commit()

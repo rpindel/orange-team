@@ -1,6 +1,5 @@
-'''
-Orange Group CSD-310 2022
-'''
+# Orange Group CSD-310 2022
+
 
 import mysql.connector
 from mysql.connector import errorcode
@@ -18,7 +17,7 @@ db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
 
-# def drop_tables():
+#def drop_tables():
     # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
 #    drop_t  = "DROP TABLE IF EXISTS "
 #    drop_list = [
