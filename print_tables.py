@@ -11,9 +11,10 @@ def print_tables():
 
     cursor = db.cursor()
     
-        cursor.execute("Show tables;")
+        cursor.execute("SELECT * FROM supplier")
 
     results = cursor.fetchall()
 
     for tables in results:
         print(tables)
+        print("\n")
