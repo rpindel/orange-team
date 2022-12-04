@@ -30,7 +30,7 @@ def fill_tables():
 
     # fill supplies table
     supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID) "
-                "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+                "VALUES (%s, %s, %s, %s, %s, %s)")
     values = [
         (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1),
         (2, 'Bottles', '750 ML', 254, 1.20, 1),
