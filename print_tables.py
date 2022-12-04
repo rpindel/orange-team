@@ -1,6 +1,6 @@
 import mysql.connector
 
-def main():
+def print_tables():
 
     db = mysql.connector.connect(
         user="bacchus_user",
@@ -11,9 +11,10 @@ def main():
 
     cursor = db.cursor()
     
-        cursor.execute("Show tables;")
+        cursor.execute("SELECT * FROM supplier")
 
     results = cursor.fetchall()
 
     for tables in results:
         print(tables)
+        print("\n")
