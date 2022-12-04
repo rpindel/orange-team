@@ -17,29 +17,29 @@ db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
 
-#def drop_tables():
+def drop_tables():
     # cursor.execute("DROP USER IF EXISTS 'bacchus_user'@'localhost';")
-#    drop_t  = "DROP TABLE IF EXISTS "
-#    drop_list = [
-#        "supplier;",
-#        "supplies;",
-#        "supply_order;",
-#        "supply_order_details;",
-#        "wine;",
-#        "batch;",
-#        "wine_order;",
-#        "wine_order_details;",
-#        "wine_distributor_details;",
-#        "distributor;",
-#        "employee;",
-#        "employee_alternate;",
-#        "employee_time_worked;",
-#        "zip_lookup;",
-#        "department;",
-#        "positions;"
-#    ]
-#    for table in drop_list:
-#        cursor.execute(drop_t + table)
+    drop_t  = "DROP TABLE IF EXISTS "
+    drop_list = [
+        "supplier;",
+        "supplies;",
+        "supply_order;",
+        "supply_order_details;",
+        "wine;",
+        "batch;",
+        "wine_order;",
+        "wine_order_details;",
+        "wine_distributor_details;",
+        "distributor;",
+        "employee;",
+        "employee_alternate;",
+        "employee_time_worked;",
+        "zip_lookup;",
+        "department;",
+        "positions;"
+    ]
+    for table in drop_list:
+        cursor.execute(drop_t + table)
 
 
 # create new user for bacchus winery
@@ -85,7 +85,7 @@ def create_tables():
         # create wine_order_details table
         ("CREATE TABLE wine_order_details (Wine_Order_ID INT NOT NULL, Wine_ID INT NOT NULL, "
          "Quantity_Ordered INT NOT NULL, PRIMARY KEY(Wine_Order_ID, Wine_ID));"),
-        # create distributor_orders_details table
+        # create wine_distributor_details table
         ("CREATE TABLE wine_distributor_details (Wine_ID INT NOT NULL, "
          "Distributor_ID INT NOT NULL, PRIMARY KEY(Wine_ID, Distributor_ID));"),
         # create distributor table

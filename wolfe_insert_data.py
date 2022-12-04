@@ -123,7 +123,7 @@ def fill_tables():
                   "VALUES (%s, %s,%s)")
 
     values = [
-        (1000, 'owners', '6930090'),
+        (1000, 'owners', 6930090),
         (2000, 'Finance', 6383017),
         (3000, 'Marketing', 748051),
         (4000, 'Facilites', 5307392),
@@ -174,3 +174,50 @@ def fill_tables():
     mycursor.executemany(employee_alternate, values)
     mydb.commit()
     print(mycursor.rowcount, "row were inserted into employee alternate table")
+
+    supply_order = ("INSERT INTO supply_order(Supply_Order_Id INT, Total_Cost DECIMAL (10,2), Order_Date DATETIME, Order_Method ENUM, Order_Tracking_Number VARCHAR (30), Order_Delivery_Carrier, Order_Estimated_Delivery_Date, Order_Actual_Delivery_Date, Supplier_ID)"
+                "VALUES (%s,%s, %s, %s,%s, %s, %s, %s, %s)")
+
+    values = [
+    (1111,	'2500.00',	'2022-04-21',	'online',	33783220542444073463,	'USPS',	'2022-04-26',	'2022-04-26', '14:00',	1),
+    (2222,	'12,000.00',	'2022-05-21',	'online',	33668316260356970224,	'USPS',	'2022-05-26',	'2022-05-25', '14:30',	1),
+    (3333,	'500.00',	'2022-06-21',	'phone',	81102417195194130687,	'UPS',	'2022-06-26',	'2022-06-28', '16:00',	4),
+    (4444,	'2,500.00',	'2022-08-21',	'phone',	58613729517346820701,	'FEDEX',	'2022-08-26',	'2022-08-27', '09:00',	3),
+    (5555,	'25,000.00',	'2022-10-21',	'phone',	71763449314037379282,	'FEDEX',	'2022-10-26',	'2022-10-24', '11:00',	3),
+    (6666,	'20,000.00',	'2022-11-21',	'phone',	84904082002849849284,	'UPS',	'2022-11-26',	'2022-11-30', '16:4',	4),
+
+]
+    mycursor.executemany(supply_order, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into suppy_order table")
+
+    wine_order = ("INSERT INTO wine_order_ID(Wine_Order_ID, Wine_ID, Quantity_Ordered)" "VALUES(%s,%s,%s)")
+
+    values = [
+        (1154, 1, 100),
+        (1155, 2, 100),
+        (1156, 3, 100),
+        (1157, 4, 100),
+        (1158, 5, 10),
+        (1159, 6, 40),
+
+    ]
+    mycursor.executemany(wine_order, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into wine_order table")
+
+    distributor = ("INSERT INTO distributor(Distributor_ID, Name, Street_Address, Street_Address_2, Zip, Contact_First_Name, Contact_Last_Name, Phone_Number, Email_Address, Active Bit)"
+                   "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+
+    values = [
+        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', 'NULL', 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 'Y'),
+        (342, 'A1 Beer and Liquor','693343 Main Street' , 'NULL', 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 'Y'),
+        (775, 'Bakers Grocery', '4298 Merlot Place', 'NULL', 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 'Y'),
+        (889, 'Wine Club Platinum', '9899 Rocket Road', 'NULL', 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 'Y'),
+        (442, 'Wine Styles Club', '22 Canary Road', 'NULL', 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 'Y'),
+        (332, 'Cheesecake Factory', '555 Cake Drive', 'NULL', 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 'Y'),
+ 
+    ]
+    mycursor.executemany(distributor, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into distributor table")

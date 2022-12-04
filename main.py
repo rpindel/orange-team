@@ -9,7 +9,7 @@ import print_tables
 # CREATE USER 'bacchus_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqltest';
 # GRANT ALL PRIVILEGES ON bacchus_wine.* TO 'bacchus_user'@'localhost';
 
-#create_tables.drop_tables()
+create_tables.drop_tables()
 create_tables.create_tables()
 fill_tables.fill_tables()
 # print_tables.print_tables()  # tentative name for this function
