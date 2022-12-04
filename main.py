@@ -3,11 +3,7 @@ import fill_tables
 import print_tables
 
 # we make our functions in the other files and call them on this one
-# main.py needs the following run manually on the MySQL instance first
-# CREATE DATABASE bacchus_wine;
-# DROP USER IF EXISTS 'bacchus_user'@'localhost';
-# CREATE USER 'bacchus_user'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqltest';
-# GRANT ALL PRIVILEGES ON bacchus_wine.* TO 'bacchus_user'@'localhost';
+# main.py needs to have the bacchus_wine_db_init.sql run first
 
 # create_tables.drop_tables()
 create_tables.create_tables()
