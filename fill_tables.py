@@ -142,12 +142,12 @@ def fill_tables():
                 " Phone_Number, Email_Address, Active)"
                 "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
     values = [
-        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', None, 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', '1'),
-        (342, 'A1 Beer and Liquor','693343 Main Street' , None, 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', '1'),
-        (775, 'Bakers Grocery', '4298 Merlot Place', None, 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', '1'),
-        (889, 'Wine Club Platinum', '9899 Rocket Road', None, 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', '1'),
-        (442, 'Wine Styles Club', '22 Canary Road', None, 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', '1'),
-        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', '1')
+        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', None, 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 1),
+        (342, 'A1 Beer and Liquor','693343 Main Street' , None, 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 1),
+        (775, 'Bakers Grocery', '4298 Merlot Place', None, 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 1),
+        (889, 'Wine Club Platinum', '9899 Rocket Road', None, 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 1),
+        (442, 'Wine Styles Club', '22 Canary Road', None, 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 1),
+        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 1)
      ]
     mycursor.executemany(distributor, values)
     mydb.commit()
@@ -255,16 +255,16 @@ def fill_tables():
     positions = "INSERT INTO positions (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
 
     values = [
-        (100, 'Owner', None, '0','1'),
-        (120, 'Administrative Assistant', 20, '1', '0'),
-        (200, 'Sales', 30, '0', '1'),
-        (220, 'Marketing', 25, '0', '0'),
-        (300, 'Production Manager', 23, '1', '1'),
-        (320, 'Production Laborer', 20, '1', '0'),
-        (400, 'Maintenance', 20, '1', '0'),
-        (420, 'Environmental', 15, '1', '0'),
-        (500, 'Accounting / Payroll', 30, '1', '0'),
-        (600, 'Logistics', 25, '1', '0'),
+        (100, 'Owner', None, 0,1),
+        (120, 'Administrative Assistant', 20, 1, 0),
+        (200, 'Sales', 30, 0, 1),
+        (220, 'Marketing', 25, 0, 0),
+        (300, 'Production Manager', 23, 1, 1),
+        (320, 'Production Laborer', 20, 1, 0),
+        (400, 'Maintenance', 20, 1, 0),
+        (420, 'Environmental', 15, 1, 0),
+        (500, 'Accounting / Payroll', 30, 1, 0),
+        (600, 'Logistics', 25, 1, 0),
     ]
     mycursor.executemany(positions, values)
     mydb.commit()
