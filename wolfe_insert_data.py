@@ -5,7 +5,7 @@ import mysql.connector
 mydb= mysql.connector.connect()
 config = {
     "user": "bacchus_user",
-    "password": "bacchus_wine",
+    "password": "mysqltest",
     "host": "localhost",
     "database": "bacchus_wine",
     "raise_on_warnings": True
@@ -120,7 +120,7 @@ def fill_tables():
 
 # fill department table
     deparment = ("INSERT INTO department(Department_ID INT, Department_Name VARCHAR(15), Department_Head INT (Employee_ID))"
-                  "VALUES (%s, %s,%s,%s)")
+                  "VALUES (%s, %s,%s)")
 
     values = [
         (1000, 'owners', '6930090'),
@@ -134,3 +134,43 @@ def fill_tables():
     mycursor.executemany(deparment, values)
     mydb.commit()
     print(mycursor.rowcount, "row were inserted into department table")
+
+    # employee_alternate
+
+    employee_alternate = ( "INSERT INTO employee_alternate( Stree_Address_1 VARCHAR(35), Stree_Address_1 VARCHAR(35) , Zip INT, Phone_Number VARCHAR(15), Email_Address VARCHAR(45), Term_Date DATE, Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT UNIQUE, DOB DATE, Employee_ID INT )"
+        "VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)")
+
+    values = [
+    ('3924 Rose Stree',	'NULL', 68111, '402-966-8247',	'Stantheman@gmail.com',	'NULL',	'NULL',	'NULL',	748149274,	'1984-11-11', 6930090),
+    ('3205 Pearcy Avenue',	'Apt 10', 68111, '402-826-5015', 'Dbaccu80@yahoo.com',	'NULL',	'NULL',	'NULL',	251345289,	'1965-04-12', 1380275),
+    ('826 Westport Avenue',	'NULL',	68111,	'402-372-6785',	'Jcollinshi@yahoo.com',	'NULL',	'NULL',	'NULL',	634587654,	'1996-09-23', 6383017),
+    ('70 East Marlborough Avenue',	'NULL',	50310,	'515-392-9069',	'Rozzu4@gmail.com',	'NULL',	'NULL',	'NULL',	214375683,	'1990-10-03', 7480510),
+    ('7123 S. Glenwood St',	'NULL',	53188,	'262-601-9735',	'BobbyUl@gmail.com', 'NULL', 'NULL', 'NULL', 963620155,	'1994-04-20', 8995741),
+    ('446 North Ave', 'Apt 2',	27513,	'919-195-2072',	'Doyleman@hotmail.com',	'NULL',	'NULL',	'NULL',	135249771,	'1983-07-20', 7767463),
+    ('7603 Third Dr', 'Apt 3',	52501, '641-209-9539',	'Dogloverxooxxo@aol.com', 'NULL', 'NULL', 'NULL', 912662242, '1986-07-09', 1944186),
+    ('9423 Belmont Street',	'NULL',	51537,	'712-712-7573',	'Catlady44Elyse@gmail.com',	'NULL',	'NULL',	'NULL',	289979667,	'1974-05-23',	8613677),
+    ('12 Pineknoll St',	'NULL',	68111,	'402-817-7588',	'Clineantwan@gmail.com',	'NULL',	'NULL',	'NULL',	645881321,	'1997-06-23',	5687918),
+    ('3 West Street', 'NULL',	50310,	'515-738-5018',	'AFrankhappy111@icloud.com',	'NULL',	'NULL',	'NULL',91220286,	'2001-12-26',	2795091),
+    ('27 Old Colonial Ave',	'NULL',	53188,	'262-523-9023',	'TBird@icloud.com',	'NULL',	'NULL',	'NULL',	338355472,	'1976-10-02',	2799911),
+    ('167 Pine St',	'Suite 100',	27513,	'919-577-9325',	'Keirasmail@gmail.com',	'NULL',	'NULL',	'NULL',	817261829,	'1979-08-29',	1842386),
+    ('7172 NW. Saxon Ave',	'NULL',	52501,	'641-538-0399',	'C4Horne@yahoo.com',	'NULL',	'NULL',	'NULL',	373644533,	'1977-06-15',	1314667),
+    ('69 Sutor Ave',	'NULL',	51537,	'712-575-5087',	'Vinanyiah@aol.com',	'NULL',	'NULL',	'NULL',	844236731,	'1986-02-13',	3695025),
+    ('700 Valley Farms Ave',	'NULL',	68111,	'402-335-8005',	'Frosty0mia@icloud.com',	'NULL',	'NULL',	'NULL',	635478765,	'1992-04-16',	5937994),
+    ('80 SE. Hillside Road',	'NULL',	50310,	'515-253-1609',	'Adrianadolph@hotmail.com',	'NULL',	'NULL',	'NULL',	475645765,	'1983-01-04',	3021812),
+    ('7272C Linden Rd',	'NULL',	53188,	'262-858-7453',	'daviclark4312@aol.com',	'NULL',	'NULL',	'NULL',	870978909,	'2000-09-17',	5667699),
+    ('9684 Lees Creek Ave',	'NULL',	27513,	'919-304-6304',	'lexicalhoun99@gmail.com',	'NULL',	'NULL',	'NULL',	125432454,	'1999-01-30',	7579383),
+    ('796 Plymouth Street',	'NULL',	52501,	'641-712-6123',	'Parker7Hart@icloud.com',	'NULL',	'NULL',	'NULL',	745667546,	'1992-03-15',	4145223),
+    ('82 Roosevelt St',	'NULL',	51537,	'712-433-1562',	'Jord10A@aol.com',	'NULL',	'NULL',	'NULL',	987689879,	'1996-10-24',	5823178),
+    ('415 West Henry Smith St',	'NULL',	68111,	'402-674-8021',	'DH4632@gmail.com',	'NULL',	'NULL',	'NULL',	346554634,	'1991-05-23',	4180563),
+    ('9774 Birch Hill Rd',	'NULL',	50310,	'515-452-2415',	'herringml76@yahoo.com',	'NULL',	'NULL',	'NULL',	323243324,	'1993-07-09',	4916879),
+    ('215 Brookside Avenue',	'NULL',	53188,	'262-848-0672',	'mscaldwel@gmail.com',	'NULL',	'NULL',	'NULL',	524323453,	'1995-10-02',	5307392),
+    ('7874 Sunbeam Avenue',	'NULL',	27513,	'919-845-9528',	'alherb2060@icloud.com',	'NULL',	'NULL',	'NULL',	634536455,	'1998-01-21',	9685338),
+    ('7848 S. Clark St',	'NULL',	52501,	'641-525-3606',	'Ramseyem49@hotmail.com',	'NULL',	'NULL',	'NULL',	689575689,	'1989-05-04',	4059962),
+    ('827 NE. Vine St',	'NULL',	51537,	'712-657-6502',	'Sparzasar0u@icloud.com',	'NULL',	'NULL',	'NULL',	678586756,	'1988-12-13',	5939049),
+    ('7 North Bear Hill Ave',	'NULL',	68111,	'402-177-4774',	'branchbrantiago@gmail.com',	'NULL',	'NULL',	'NULL',	520296509,	'1987-03-26',	7863543),
+    ('70 North Summerhouse Street',	'NULL',	50310,	'515-974-2114',	'leonbig7474@aol.com',	'NULL',	'NULL',	'NULL',	980123098,	'1985-09-13',	9855487),
+]
+
+    mycursor.executemany(employee_alternate, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into employee alternate table")
