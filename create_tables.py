@@ -85,7 +85,7 @@ def create_tables():
         # create wine_order_details table
         ("CREATE TABLE wine_order_details (Wine_Order_ID INT NOT NULL, Wine_ID INT NOT NULL, "
          "Quantity_Ordered INT NOT NULL, PRIMARY KEY(Wine_Order_ID, Wine_ID));"),
-        # create distributor_orders_details table
+        # create wine_distributor_details table
         ("CREATE TABLE wine_distributor_details (Wine_ID INT NOT NULL, "
          "Distributor_ID INT NOT NULL, PRIMARY KEY(Wine_ID, Distributor_ID));"),
         # create distributor table

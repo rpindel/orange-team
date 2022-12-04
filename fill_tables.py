@@ -19,7 +19,7 @@ def fill_tables():
          'angel.garay@shws.com', 'online', 'these are details', 1),
         (2, 'Republic National', '1114 Baldwin ST', 'and a half', 45678, 'Damian', 'Brown', '254-568-1245',
          'damian.brown@repubnat.com', 'phone', 'these are details', 0),
-        (3, 'Breakthru', '4587 Somewhere RD', 'Null', 25896, 'Bob', 'Lasname', '896-456-2580',
+        (3, 'Breakthru', '4587 Somewhere RD', None, 25896, 'Bob', 'Lasname', '896-456-2580',
          'blas@breakthru.com', 'post', 'prefers correspondence by mail', 1),
         (4, 'Young\'s market', '1 Young CIR', 'Suite 100', 56489, 'George', 'Young', '321-456-9870',
          'gyoung@youngsmarket.com', 'online', 'I\'m not really sure what should be here', 1),
@@ -29,8 +29,8 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supplier table")
 
     # Supplies table
-    supplies = ("INSERT INTO supplies (supply_ID, name, description, onhand_quantity, unit_price, Supplier_ID,"
-                "Supply_order_ID)"
+    supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID,"
+                "Supply_Order_ID)"
                 "VALUES (%s, %s, %s, %s, %s, %s, %s)")
     values = [
         (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1, 1111),
@@ -45,7 +45,7 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supplies table")
 
     # Supply_order_details table
-    supply_order_details = ("INSERT INTO supply_order_details (supply_order_ID, Supply_ID, quantity_ordered)"
+    supply_order_details = ("INSERT INTO supply_order_details (Supply_Order_ID, Supply_ID, Quantity_Ordered)"
                             "VALUES (%s, %s, %s)")
     values = [
         (1111, 1, 10000),
@@ -77,7 +77,7 @@ def fill_tables():
     print(mycursor.rowcount, "was inserted into supply order table")
 
     # Wine table
-    wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
+    wine = "INSERT INTO wine (Wine_ID, Name, Style, Onhand_Quantity, Batch_ID, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
     values = [
         (1, 'Dark and Red', 'Merlot', 300, 2022010101, 15.00),
         (2, 'Crimson Silk', 'Cabernet', 257, 2022010102, 15.00),
@@ -88,11 +88,12 @@ def fill_tables():
     ]
     mycursor.executemany(wine, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the Wine table")
+    print(mycursor.rowcount, " rows were inserted into the wine table")
 
-    # Batch table
-    batch = "INSERT INTO batch (Batch_ID, Bottled_date, Expiration_Date, Quantity, Wine_id) " \
-            "VALUES (%s, %s, %s, %s, %s)"
+
+    # fill batch table
+    batch = ("INSERT INTO batch (Batch_ID, Bottled_Date, Expiration_Date, Quantity, Wine_id) " \
+            "VALUES (%s, %s, %s, %s, %s)")
     values = [
         (2022010101, '2022-08-01', '2024-08-01', 200, 1),
         (2022010102, '2022-10-01', '2023-10-01', 200, 2),
@@ -103,13 +104,100 @@ def fill_tables():
     ]
     mycursor.executemany(batch, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the Batch table")
+    print(mycursor.rowcount, " rows were inserted into the batch table")
 
+    # fill wine_order table
+    wine_order = ("INSERT INTO wine_order (Wine_Order_ID, Total_Cost, Order_Date, Order_Method, "
+                "Order_Estimated_Delivery_Date, Order_Actual_Delivery_Date, Distributor_ID)" "VALUES(%s,%s,%s,%s,%s,%s,%s)")
+    values = [
+        (1154, 1,500.00, 2022-06-24 11:20, Post, 2022-12-01, 2022-12-01 10:04, 441)
+        (1155, 1,500.00, 2022-02-10 14:14, Online, 2022-11-25, 2022-11-23 12:35, 342)
+        (1156, 1,200.00, 2021-11-15 15:10, Phone, 2022-11-13, 2022-11-17 09:10, 775)
+        (1157, 800.00, 2022-07-10 09:20, Online, 2022-10-29, 2022-10-27 03:20, 889)
+        (1158, 250.00, 2021-04-19 16:09, Post, 2022-11-16, 2022-11-16 02:15, 442)
+        (1159, 1,600.00, 2020-12-20 08:15, Phone, 2022-10-02, 2022-09-30 09:00, 332)
+    ]
+    mycursor.executemany(wine_order, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into wine_order table")
+
+
+    # fill wine_order_details table
+    wine_order_details = "INSERT INTO wine_order_details (Wine_Order_ID, Wine_ID, Quantity_Ordered) VALUES(%s,%s,%s)"
+    values = [
+        (1154, 1, 100),
+        (1155, 2, 100),
+        (1156, 3, 100),
+        (1157, 4, 100),
+        (1158, 5, 10),
+        (1159, 6, 40)
+    ]
+    mycursor.executemany(wine_order_details, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the wine_order_details table")
+    
+    # fill distributor_table
+    distributor = ("INSERT INTO distributor (Distributor_ID, Name, Street_Address_1, Street_Address_2, Zip, Contact_First_Name, Contact_Last_Name, "
+                " Phone_Number, Email_Address, Active)"
+                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+    values = [
+        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', None, 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 'Y'),
+        (342, 'A1 Beer and Liquor','693343 Main Street' , None, 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 'Y'),
+        (775, 'Bakers Grocery', '4298 Merlot Place', None, 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 'Y'),
+        (889, 'Wine Club Platinum', '9899 Rocket Road', None, 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 'Y'),
+        (442, 'Wine Styles Club', '22 Canary Road', None, 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 'Y'),
+        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 'Y'),
+ 
+    ]
+    mycursor.executemany(distributor, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into distributor table")
+
+
+
+    # fill wine_distributor_details table
+    wine_distributor_details = "INSERT INTO wine_distributor_details (Wine_ID, Distributor_ID) VALUES(%s,%s)"
+    values = [
+        (1,	441),
+        (2,	441),
+        (3,	441),
+        (4,	441),
+        (5,	441),
+        (6,	441),
+        (1, 342),
+        (2,	342),
+        (3, 342),
+        (4,	342),
+        (5,	342),
+        (6,	342),
+        (1,	775),
+        (2,	775),
+        (3,	775),
+        (4,	775),
+        (5,	775),
+        (6,	775),
+        (1,	889),
+        (2,	889),
+        (3,	889),
+        (4,	889),
+        (5,	889),
+        (6,	889),
+        (1,	442),
+        (2,	442),
+        (3,	442),
+        (4,	442),
+        (1,	332),
+        (2,	332),
+        (3,	332),
+        (4,	332)
+    ]
+    mycursor.executemany(wine_distributor_details, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the wine_distributor_details table")
+    
     # fill employee table
     employee = ("INSERT INTO employee (Employee_ID, First_Name, Last_Name, Hire_Date, "
-                "Start_Date, Active, Department_ID, Position_ID)"
-                "VALUES (%s,%s, %s,%s,%s,%s,%s,%s)")
-
+    "Start_Date, Active, Department_ID, Position_ID) VALUES (%s,%s,%s,%s,%s,%s,%s)")
     values = [
         (6930090, 'Stan', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100,),
         (1380275, 'Davis', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100),
@@ -142,9 +230,10 @@ def fill_tables():
     ]
     mycursor.executemany(employee, values)
     mydb.commit()
-    print(mycursor.rowcount, "rows were insert into employees table")
+    print(mycursor.rowcount, " rows were insert into employees table")
 
     # fill employee time worked table
+
     employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift , Clock_Out_Shift "
                             ", Clock_Out_Break , Clock_In_Break , Clock_Out_Lunch , "
                             "Clock_In_Lunch, Employee_ID)"
@@ -164,31 +253,29 @@ def fill_tables():
     ]
     mycursor.executemany(employee_time_worked, values)
     mydb.commit()
-    print(mycursor.rowcount, "rows were inserted into Employee Time Worked Table")
+    print(mycursor.rowcount, " rows were inserted into Employee Time Worked Table")
 
-    # fill position table
-    positions = ("INSERT INTO positions (Position_ID, Position_Title, Pay_Grade, Hourly, "
-                 "Supervisory)VALUES (%s, %s, %s, %s, %s)")
+    # fill positions table
+    position = "INSERT INTO position (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
 
     values = [
-        (100, 'Owner', None, 0, 1),
-        (120, 'Administrative Assistant', 20, 1, 0),
-        (200, 'Sales', 30, 0, 0),
-        (220, 'Marketing', 25, 0, 0),
-        (300, 'Production Manager', 23, 1, 1),
-        (320, 'Production Laborer', 20, 1, 0),
-        (400, 'Maintenance', 20, 1, 0),
-        (420, 'Environmental', 15, 1, 0),
-        (500, 'Accounting / Payroll', 30, 1, 0),
-        (600, 'Logistics', 25, 1, 0),
+        (100, 'Owner', None, 'N','Y'),
+        (120, 'Administrative Assistant', 20, 'Y', 'N'),
+        (200, 'Sales', 30, 'N', 'N'),
+        (220, 'Marketing', 25, 'N', 'N'),
+        (300, 'Production Manager', 23, 'Y', 'Y'),
+        (320, 'Production Laborer', 20, 'Y', 'N'),
+        (400, 'Maintenance', 20, 'Y', 'N'),
+        (420, 'Environmental', 15, 'Y', 'N'),
+        (500, 'Accounting / Payroll', 30, 'Y', 'N'),
+        (600, 'Logistics', 25, 'Y', 'N'),
     ]
     mycursor.executemany(positions, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into position table")
+    print(mycursor.rowcount, " row weres inserted into position table")
 
     # fill zip code table
-    zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s, %s,%s,%s)"
-
+    zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s,%s,%s,%s)"
     values = [
         (68111, 'Omaha', 'NE', 'USA'),
         (50310, 'Des Moines', 'IA', 'USA'),
@@ -199,15 +286,12 @@ def fill_tables():
     ]
     mycursor.executemany(zip_lookup, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into zip table")
+    print(mycursor.rowcount, " rows were inserted into zip table")
 
     # fill department table
-    department = (
-        "INSERT INTO department(Department_ID, Department_Name, Department_Head)"
-        "VALUES (%s, %s,%s)")
-
+    deparment = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
     values = [
-        (1000, 'owners', 6930090),
+        (1000, 'Owners', '6930090'),
         (2000, 'Finance', 6383017),
         (3000, 'Marketing', 748051),
         (4000, 'Facilites', 5307392),
@@ -218,78 +302,39 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into department table")
 
-    # employee_alternate
-    employee_alternate = ("INSERT INTO employee_alternate( Street_Address_1, Street_Address_2, "
-                          "Zip, Phone_Number, Email_Address, Term_Date, "
-                          "Term_Reason, Rehireable, SSN, DOB, Employee_ID)"
-                          "VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)")
+    # fill employee_alternate
+    employee_alternate = "INSERT INTO employee_alternate (Street_Address_1, Street_Address_2, Zip, Phone_Number, Email_Address, Term_Date, Term_Reason, Rehireable, SSN, DOB, Employee_ID) VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)"
 
     values = [
-        ('3924 Rose Stree', None, 68111, '402-966-8247', 'Stantheman@gmail.com', None, None, None, 748149274,
-         '1984-11-11', 6930090),
-        ('3205 Pearcy Avenue', 'Apt 10', 68111, '402-826-5015', 'Dbaccu80@yahoo.com', None, None, None, 251345289,
-         '1965-04-12', 1380275),
-        (
-            '826 Westport Avenue', None, 68111, '402-372-6785', 'Jcollinshi@yahoo.com', None, None, None,
-            634587654,
-            '1996-09-23', 6383017),
-        ('70 East Marlborough Avenue', None, 50310, '515-392-9069', 'Rozzu4@gmail.com', None, None, None,
-         214375683, '1990-10-03', 7480510),
-        ('7123 S. Glenwood St', None, 53188, '262-601-9735', 'BobbyUl@gmail.com', None, None, None, 963620155,
-         '1994-04-20', 8995741),
-        ('446 North Ave', 'Apt 2', 27513, '919-195-2072', 'Doyleman@hotmail.com', None, None, None, 135249771,
-         '1983-07-20', 7767463),
-        ('7603 Third Dr', 'Apt 3', 52501, '641-209-9539', 'Dogloverxooxxo@aol.com', None, None, None, 912662242,
-         '1986-07-09', 1944186),
-        ('9423 Belmont Street', None, 51537, '712-712-7573', 'Catlady44Elyse@gmail.com', None, None, None,
-         289979667, '1974-05-23', 8613677),
-        ('12 Pineknoll St', 'NULL', 68111, '402-817-7588', 'Clineantwan@gmail.com', None, None, None, 645881321,
-         '1997-06-23', 5687918),
-        ('3 West Street', 'NULL', 50310, '515-738-5018', 'AFrankhappy111@icloud.com', None, None, None, 91220286,
-         '2001-12-26', 2795091),
-        ('27 Old Colonial Ave', None, 53188, '262-523-9023', 'TBird@icloud.com', None, None, None, 338355472,
-         '1976-10-02', 2799911),
-        ('167 Pine St', 'Suite 100', 27513, '919-577-9325', 'Keirasmail@gmail.com', None, None, None, 817261829,
-         '1979-08-29', 1842386),
-        ('7172 NW. Saxon Ave', None, 52501, '641-538-0399', 'C4Horne@yahoo.com', None, None, None, 373644533,
-         '1977-06-15', 1314667),
-        ('69 Sutor Ave', None, 51537, '712-575-5087', 'Vinanyiah@aol.com', None, None, None, 844236731,
-         '1986-02-13', 3695025),
-        ('700 Valley Farms Ave', None, 68111, '402-335-8005', 'Frosty0mia@icloud.com', None, None, None,
-         635478765, '1992-04-16', 5937994),
-        ('80 SE. Hillside Road', 'NULL', 50310, '515-253-1609', 'Adrianadolph@hotmail.com', 'NULL', 'NULL', 'NULL',
-         475645765, '1983-01-04', 3021812),
-        ('7272C Linden Rd', 'NULL', 53188, '262-858-7453', 'daviclark4312@aol.com', 'NULL', 'NULL', 'NULL', 870978909,
-         '2000-09-17', 5667699),
-        ('9684 Lees Creek Ave', 'NULL', 27513, '919-304-6304', 'lexicalhoun99@gmail.com', 'NULL', 'NULL', 'NULL',
-         125432454, '1999-01-30', 7579383),
-        ('796 Plymouth Street', 'NULL', 52501, '641-712-6123', 'Parker7Hart@icloud.com', 'NULL', 'NULL', 'NULL',
-         745667546, '1992-03-15', 4145223),
-        ('82 Roosevelt St', 'NULL', 51537, '712-433-1562', 'Jord10A@aol.com', 'NULL', 'NULL', 'NULL', 987689879,
-         '1996-10-24', 5823178),
-        (
-            '415 West Henry Smith St', 'NULL', 68111, '402-674-8021', 'DH4632@gmail.com', 'NULL', 'NULL', 'NULL',
-            346554634,
-            '1991-05-23', 4180563),
-        (
-            '9774 Birch Hill Rd', 'NULL', 50310, '515-452-2415', 'herringml76@yahoo.com', 'NULL', 'NULL', 'NULL',
-            323243324,
-            '1993-07-09', 4916879),
-        (
-            '215 Brookside Avenue', 'NULL', 53188, '262-848-0672', 'mscaldwel@gmail.com', 'NULL', 'NULL', 'NULL',
-            524323453,
-            '1995-10-02', 5307392),
-        ('7874 Sunbeam Avenue', 'NULL', 27513, '919-845-9528', 'alherb2060@icloud.com', 'NULL', 'NULL', 'NULL',
-         634536455, '1998-01-21', 9685338),
-        ('7848 S. Clark St', 'NULL', 52501, '641-525-3606', 'Ramseyem49@hotmail.com', 'NULL', 'NULL', 'NULL', 689575689,
-         '1989-05-04', 4059962),
-        ('827 NE. Vine St', 'NULL', 51537, '712-657-6502', 'Sparzasar0u@icloud.com', 'NULL', 'NULL', 'NULL', 678586756,
-         '1988-12-13', 5939049),
-        ('7 North Bear Hill Ave', 'NULL', 68111, '402-177-4774', 'branchbrantiago@gmail.com', 'NULL', 'NULL', 'NULL',
-         520296509, '1987-03-26', 7863543),
-        ('70 North Summerhouse Street', 'NULL', 50310, '515-974-2114', 'leonbig7474@aol.com', 'NULL', 'NULL', 'NULL',
-         980123098, '1985-09-13', 9855487),
+    ('3924 Rose Stree',	None, 68111, '402-966-8247',	'Stantheman@gmail.com',	None,	None,	None,	748149274,	'1984-11-11', 6930090),
+    ('3205 Pearcy Avenue',	'Apt 10', 68111, '402-826-5015', 'Dbaccu80@yahoo.com',	None,	None,	None,	251345289,	'1965-04-12', 1380275),
+    ('826 Westport Avenue',	None,	68111,	'402-372-6785',	'Jcollinshi@yahoo.com',	None,	None,	None,	634587654,	'1996-09-23', 6383017),
+    ('70 East Marlborough Avenue',	None,	50310,	'515-392-9069',	'Rozzu4@gmail.com',	None,	None,	None,	214375683,	'1990-10-03', 7480510),
+    ('7123 S. Glenwood St',	None,	53188,	'262-601-9735',	'BobbyUl@gmail.com', None, None, None, 963620155,	'1994-04-20', 8995741),
+    ('446 North Ave', 'Apt 2',	27513,	'919-195-2072',	'Doyleman@hotmail.com',	None,	None,	None,	135249771,	'1983-07-20', 7767463),
+    ('7603 Third Dr', 'Apt 3',	52501, '641-209-9539',	'Dogloverxooxxo@aol.com', None, None, None, 912662242, '1986-07-09', 1944186),
+    ('9423 Belmont Street',	None,	51537,	'712-712-7573',	'Catlady44Elyse@gmail.com',	None,	None,	None,	289979667,	'1974-05-23',	8613677),
+    ('12 Pineknoll St',	None,	68111,	'402-817-7588',	'Clineantwan@gmail.com',	None,	None,	None,	645881321,	'1997-06-23',	5687918),
+    ('3 West Street', None,	50310,	'515-738-5018',	'AFrankhappy111@icloud.com',	None,	None,	None,91220286,	'2001-12-26',	2795091),
+    ('27 Old Colonial Ave',	None,	53188,	'262-523-9023',	'TBird@icloud.com',	None,	None,	None,	338355472,	'1976-10-02',	2799911),
+    ('167 Pine St',	'Suite 100',	27513,	'919-577-9325',	'Keirasmail@gmail.com',	None,	None,	None,	817261829,	'1979-08-29',	1842386),
+    ('7172 NW. Saxon Ave',	None,	52501,	'641-538-0399',	'C4Horne@yahoo.com',	None,	None,	None,	373644533,	'1977-06-15',	1314667),
+    ('69 Sutor Ave',	None,	51537,	'712-575-5087',	'Vinanyiah@aol.com',	None,	None,	None,	844236731,	'1986-02-13',	3695025),
+    ('700 Valley Farms Ave',	None,	68111,	'402-335-8005',	'Frosty0mia@icloud.com',	None,	None,	None,	635478765,	'1992-04-16',	5937994),
+    ('80 SE. Hillside Road',	None,	50310,	'515-253-1609',	'Adrianadolph@hotmail.com',	None,	None,	None,	475645765,	'1983-01-04',	3021812),
+    ('7272C Linden Rd',	None,	53188,	'262-858-7453',	'daviclark4312@aol.com',	None,	None,	None,	870978909,	'2000-09-17',	5667699),
+    ('9684 Lees Creek Ave',	None,	27513,	'919-304-6304',	'lexicalhoun99@gmail.com',	None,	None,	None,	125432454,	'1999-01-30',	7579383),
+    ('796 Plymouth Street',	None,	52501,	'641-712-6123',	'Parker7Hart@icloud.com',	None,	None,	None,	745667546,	'1992-03-15',	4145223),
+    ('82 Roosevelt St',	None,	51537,	'712-433-1562',	'Jord10A@aol.com',	None,	None,	None,	987689879,	'1996-10-24',	5823178),
+    ('415 West Henry Smith St',	None,	68111,	'402-674-8021',	'DH4632@gmail.com',	None,	None,	None,	346554634,	'1991-05-23',	4180563),
+    ('9774 Birch Hill Rd',	None,	50310,	'515-452-2415',	'herringml76@yahoo.com',	None,	None,	None,	323243324,	'1993-07-09',	4916879),
+    ('215 Brookside Avenue',	None,	53188,	'262-848-0672',	'mscaldwel@gmail.com',	None,	None,	None,	524323453,	'1995-10-02',	5307392),
+    ('7874 Sunbeam Avenue',	None,	27513,	'919-845-9528',	'alherb2060@icloud.com',	None,	None,	None,	634536455,	'1998-01-21',	9685338),
+    ('7848 S. Clark St',	None,	52501,	'641-525-3606',	'Ramseyem49@hotmail.com',	None,	None,	None,	689575689,	'1989-05-04',	4059962),
+    ('827 NE. Vine St',	None,	51537,	'712-657-6502',	'Sparzasar0u@icloud.com',	None,	None,	None,	678586756,	'1988-12-13',	5939049),
+    ('7 North Bear Hill Ave',	None,	68111,	'402-177-4774',	'branchbrantiago@gmail.com',	None,	None,	None,	520296509,	'1987-03-26',	7863543),
+    ('70 North Summerhouse Street',	None,	50310,	'515-974-2114',	'leonbig7474@aol.com',	None,	None,	None,	980123098,	'1985-09-13',	9855487),
     ]
     mycursor.executemany(employee_alternate, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into employee alternate table")
+    print(mycursor.rowcount, " rows were inserted into employee alternate table")
