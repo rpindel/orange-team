@@ -93,7 +93,7 @@ def fill_tables():
     print(mycursor.rowcount, " rows were inserted into the Wine table")
 
  # Batch table
-    batch = "INSERT INTO batch (Batch_ID, Bottled_date, Expiration_Date, Quantity, Wine_id) " \
+    batch = "INSERT INTO batch (Batch_ID, Bottled_date, Expiration_Date, Quantity, Wine_id) "
             "VALUES (%s, %s, %s, %s, %s)"
     values = [
         (2022010101, '2022-08-01', '2024-08-01', 200, 1),
