@@ -128,8 +128,6 @@ def foreign_key_constraints():
          "REFERENCES supplier(Supplier_ID);"),
         ("ALTER TABLE supplies ADD CONSTRAINT fk_supplies_supplier FOREIGN KEY(Supplier_ID)"
          "REFERENCES supplier(Supplier_ID);"),
-        ("ALTER TABLE supplies ADD CONSTRAINT fk_supplies_supply_order FOREIGN KEY(Supply_Order_ID) "
-         "REFERENCES supply_order(Supply_Order_ID);"),
         "ALTER TABLE wine ADD CONSTRAINT fk_wine_batch FOREIGN KEY(Batch_ID) REFERENCES batch(Batch_ID);",
         "ALTER TABLE batch ADD CONSTRAINT fk_batch_wine FOREIGN KEY(Wine_ID) REFERENCES wine(Wine_ID);",
         ("ALTER TABLE wine_order ADD CONSTRAINT fk_wine_order_distributor FOREIGN KEY(Distributor_ID) "
