@@ -30,7 +30,7 @@ def print_tables():
 
     for tables in results:
         print(
-            f"Supply ID: {tables[0]}\nName: {tables[1]}\nDescription: {tables[2]}\nAvailable: {tables[3]}Cost: {tables[4]}\nSupplier ID: {tables[5]}\nSupply Order ID: {tables[6]}")
+            f"Supply ID: {tables[0]}\nName: {tables[1]}\nDescription: {tables[2]}\nAvailable: {tables[3]}\nCost: {tables[4]}\nSupplier ID: {tables[5]}\nSupply Order ID: {tables[6]}")
         print("\n")
 
     cursor.execute("SELECT * FROM supply_order_details;")
