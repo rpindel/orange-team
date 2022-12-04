@@ -101,7 +101,7 @@ def print_tables():
 
     for tables in results:
         print(
-            f"Distributor ID: {tables[0]}\nName: {tables[1]}\nAddress 1: {tables[2]}\nAddress 2: {tables[3]}\nZip Code: {tables[4]}\nFirst Name: {tables[5]}\nLast Name: {tables[6]}\nPhone: {tables[7]}\nEmail: {tables[8]}\nActive: {tables[9]}")
+            f"Distributor ID: {tables[0]}\nName: {tables[1]}\nAddress 1: {tables[2]}\nAddress 2: {tables[3]}\nZip Code: {tables[4]}\nFirst Name: {tables[5]}\nLast Name: {tables[6]}\nPhone: {tables[7]}\nEmail: {tables[8]}\nActive: {tables[9]}\n")
 
     cursor.execute("SELECT * FROM wine_distributor_details;")
 
