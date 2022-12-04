@@ -17,3 +17,4 @@ def print_tables():
 
     for tables in results:
         print(tables)
+        print("\n")
