@@ -1,6 +1,6 @@
 import mysql.connector
 
-def print_tables():
+def print_tables(cursor, title):
 
     db = mysql.connector.connect(
         user="bacchus_user",
