@@ -1,6 +1,6 @@
 import create_tables
 import fill_tables
-# import print_tables
+import print_tables
 
 # we make our functions in the other files and call them on this one
 # main.py needs the following run manually on the MySQL instance first
@@ -13,5 +13,5 @@ import fill_tables
 create_tables.create_tables()
 fill_tables.fill_tables()
 create_tables.foreign_key_constraints()
-# print_tables.print_tables()  # tentative name for this function
+print_tables.print_tables()  # tentative name for this function
 
