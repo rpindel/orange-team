@@ -58,25 +58,23 @@ def fill_tables():
     mycursor.executemany(supply_order_details, values)
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supply order details table")
-    # Im not sure how to go about calculating sum of quantity from supply_order_details
-    # and unit price from supplies I will double back to this
-    # Supply_order table
-    # supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
-    #                "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
-    #               " Order_Actual_Delivery_Date, Supply_ID, Supplier_ID)"
-    #              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
 
-    # values = [
-    #    (1111, SUM(bacchus_wine.), 'Environment Friendly', 1548, 0.25, 1, 1111),
-    #    (2222, '', '750 ML', 254, 1.20, 1, 2222),
-    #    (3333, '', 'Display product on Bottle', 2455, 0.05, 4, 3333),
-    #    (4444, '', 'For Processing', 25, 25, 3, 4444),
-    #    (5555, '', 'For Fermenting', 12, 2500, 3, 5555),
-    #   (6666, '', '6 bottle size', 1258, 2, 4, 6666),
-    # ]
-    # mycursor.executemany(supply_order, values)
-    # mydb.commit()
-    # print(mycursor.rowcount, "was inserted into supply order table")
+    supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
+                    "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
+                    " Order_Actual_Delivery_Date, Supplier_ID)"
+                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
+
+    values = [
+        (1111, 2500, '2022-04-21', 'online', '33783220542444073463', 'USPS', '2022-04-26', '2022-04-26 14:00:00', 1,),
+        (2222, 12000, '2022-05-21', 'online', '33668316260356970224', 'USPS', '2022-05-26', '2022-05-25 14:30:00', 1,),
+        (3333, 500, '2022-06-21', 'phone', '81102417195194130687', 'UPS', '2022-06-26', '2022-06-28 16:00:00', 4,),
+        (4444, 2500, '2022-08-21', 'phone', '58613729517346820701', 'FEDEX', '2022-08-26', '2022-08-27 9:00:00', 3,),
+        (5555, 25000, '2022-10-21', 'phone', '71763449314037379282', 'FEDEX', '2022-10-26', '2022-10-24 11:00:00', 3,),
+        (6666, 20000, '2022-11-21', 'phone', '84904082002849849284', 'UPS', '2022-11-26', '2022-11-30 16:45:00', 4,),
+    ]
+    mycursor.executemany(supply_order, values)
+    mydb.commit()
+    print(mycursor.rowcount, "was inserted into supply order table")
 
     # Wine table
     wine = "INSERT INTO wine (Wine_ID, Name, Style, Onhand_Quantity, Batch_ID, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
@@ -92,8 +90,9 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, " rows were inserted into the wine table")
 
+
     # fill batch table
-    batch = ("INSERT INTO batch (Batch_ID, Bottled_Date, Expiration_Date, Quantity, Wine_id) "
+    batch = ("INSERT INTO batch (Batch_ID, Bottled_Date, Expiration_Date, Quantity, Wine_id) " \
             "VALUES (%s, %s, %s, %s, %s)")
     values = [
         (2022010101, '2022-08-01', '2024-08-01', 200, 1),
@@ -199,56 +198,58 @@ def fill_tables():
     # fill employee table
     employee = ("INSERT INTO employee (Employee_ID, First_Name, Last_Name, Hire_Date, "
     "Start_Date, Active, Department_ID, Position_ID) VALUES (%s,%s,%s,%s,%s,%s,%s)")
-
     values = [
-        (6930090, 'Stan', 'Bacchus',	'2019-12-04',	'2019-12-04',	'Y', 1000, 100,),
-        (1380275, 'Davis', 'Bacchus', '2019-12-04', '2019-12-04', 'Y', 1000, 100),
-        (8613677, 'Elyse', 'Bailey', '1983-08-04', '1983-08-05', 'Y', 4000, 120),
-        (4059962, 'Emmanuel', 'Ramsey', '2016-10-07', '2016-10-15', 'Y', 3000, 120),
-        (1842386, 'Keira', 'Peck', '1992-08-25', '1992-08-26', 'Y', 6000, 200),
-        (5937994, 'Mia', 'Frost', '1999-09-15', '1999-09-16', 'Y', 5000, 200),
-        (9685338, 'Amaya', 'Hebert', '2014-01-14', '2014-01-15', 'Y', 2000, 200),
-        (7480510, 'Roz', 'Murphy', '2010-03-10', '2010-03-15', 'Y', 3000, 220),
-        (8995741, 'Bob', 'Ulrich', '2011-04-25', '2011-04-26', 'Y', 3000, 220),
-        (5687918, 'Antwan', 'Cline', '1985-04-16', '1985-04-17', 'Y', 3000, 220),
-        (3695025, 'Anyiah', 'Vincent', '1997-11-14', '1997-11-15', 'Y', 3000, 220),
-        (5667699, 'Davian', 'Clark', '2003-04-28', '2003-04-29', 'Y', 3000, 220),
-        (4180563, 'Deborah', 'Harrell', '2007-08-13', '2007-08-17', 'Y', 3000, 220),
-        (9855487, 'Leon', 'Gibbins', '2022-05-19', '2022-05-26', 'Y', 3000, 220),
-        (7767463, 'Henry', 'Doyle', '1982-04-02', '1982-04-03', 'Y', 5000, 300),
-        (5939049, 'Sara', 'Esparza', '2020-01-22', '2020-01-26', 'Y', 2000, 320),
-        (5823178, 'Jordyn', 'Aguilar', '2007-03-05', '2007-03-06', 'Y', 4000, 400),
-        (7863543, 'Santiago', 'Branch', '2020-01-29', '2020-02-05', 'Y', 5000, 400),
-        (4916879, 'Marley', 'Herring', '2007-09-27', '2007-09-28', 'Y', 5000, 420),
-        (5307392, 'Vivian', 'Caldwell', '2011-07-27', '2011-07-28', 'Y', 4000, 420),
-        (6383017, 'Janet', 'Collins', '2017-05-15', '2017-05-17', 'Y', 2000, 500),
-        (2795091, 'Alisa', 'Franklin', '1988-06-16', '1988-06-17', 'Y', 2000, 500),
-        (2799911, 'Trenton', 'Bird', '1990-12-14', '1990-12-15', 'Y', 2000, 500),
-        (3021812, 'Adriana', 'Randolph', '2002-02-08', '2002-02-09', 'Y', 2000, 500),
-        (7579383, 'Alexus', 'Calhoun', '2006-08-30', '2006-09-05', 'Y', 2000, 500),
-        (1944186, 'Maria', 'Costanza', '1983-06-17', '1983-06-18', 'Y', 6000, 600),
-        (1314667, 'Carlos', 'Horne', '1995-02-17', '1995-02-18', 'Y', 5000, 600),
-        (4145223, 'Parker', 'Hart', '2006-11-02', '2006-11-03', 'Y', 5000, 600)
+        (6930090, 'Stan', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100,),
+        (1380275, 'Davis', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100),
+        (8613677, 'Elyse', 'Bailey', '1983-08-04', '1983-08-05', 1, 4000, 120),
+        (4059962, 'Emmanuel', 'Ramsey', '2016-10-07', '2016-10-15', 1, 3000, 120),
+        (1842386, 'Keira', 'Peck', '1992-08-25', '1992-08-26', 1, 6000, 200),
+        (5937994, 'Mia', 'Frost', '1999-09-15', '1999-09-16', 1, 5000, 200),
+        (9685338, 'Amaya', 'Hebert', '2014-01-14', '2014-01-15', 1, 2000, 200),
+        (7480510, 'Roz', 'Murphy', '2010-03-10', '2010-03-15', 1, 3000, 220),
+        (8995741, 'Bob', 'Ulrich', '2011-04-25', '2011-04-26', 1, 3000, 220),
+        (5687918, 'Antwan', 'Cline', '1985-04-16', '1985-04-17', 1, 3000, 220),
+        (3695025, 'Anyiah', 'Vincent', '1997-11-14', '1997-11-15', 1, 3000, 220),
+        (5667699, 'Davian', 'Clark', '2003-04-28', '2003-04-29', 1, 3000, 220),
+        (4180563, 'Deborah', 'Harrell', '2007-08-13', '2007-08-17', 1, 3000, 220),
+        (9855487, 'Leon', 'Gibbins', '2022-05-19', '2022-05-26', 1, 3000, 220),
+        (7767463, 'Henry', 'Doyle', '1982-04-02', '1982-04-03', 1, 5000, 300),
+        (5939049, 'Sara', 'Esparza', '2020-01-22', '2020-01-26', 1, 2000, 320),
+        (5823178, 'Jordyn', 'Aguilar', '2007-03-05', '2007-03-06', 1, 4000, 400),
+        (7863543, 'Santiago', 'Branch', '2020-01-29', '2020-02-05', 1, 5000, 400),
+        (4916879, 'Marley', 'Herring', '2007-09-27', '2007-09-28', 1, 5000, 420),
+        (5307392, 'Vivian', 'Caldwell', '2011-07-27', '2011-07-28', 1, 4000, 420),
+        (6383017, 'Janet', 'Collins', '2017-05-15', '2017-05-17', 1, 2000, 500),
+        (2795091, 'Alisa', 'Franklin', '1988-06-16', '1988-06-17', 1, 2000, 500),
+        (2799911, 'Trenton', 'Bird', '1990-12-14', '1990-12-15', 1, 2000, 500),
+        (3021812, 'Adriana', 'Randolph', '2002-02-08', '2002-02-09', 1, 2000, 500),
+        (7579383, 'Alexus', 'Calhoun', '2006-08-30', '2006-09-05', 1, 2000, 500),
+        (1944186, 'Maria', 'Costanza', '1983-06-17', '1983-06-18', 1, 6000, 600),
+        (1314667, 'Carlos', 'Horne', '1995-02-17', '1995-02-18', 1, 5000, 600),
+        (4145223, 'Parker', 'Hart', '2006-11-02', '2006-11-03', 1, 5000, 600)
     ]
     mycursor.executemany(employee, values)
     mydb.commit()
     print(mycursor.rowcount, " rows were insert into employees table")
 
     # fill employee time worked table
-    employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift, Clock_Out_Shift, Clock_Out_Break, "
-    "Clock_In_Break, Clock_Out_Lunch, Clock_In_Lunch, Employee_ID) VALUES(%s,%s,%s,%s,%s,%s,%s)")
+
+    employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift , Clock_Out_Shift "
+                            ", Clock_Out_Break , Clock_In_Break , Clock_Out_Lunch , "
+                            "Clock_In_Lunch, Employee_ID)"
+                            "VALUES(%s, %s, %s, %s, %s, %s, %s, %s)")
 
     values = [
-        ('2022-11-01',  '07:00:00',  '11:00:00',    None,       None,      None,      None,        '4916879'),
-        ('2022-11-02',  '07:00:00',	 '12:00:00',	'10:00:00',	  '10:15:00',  None,	    None,	      '5307392'),
-        ('2022-11-03',  '08:00:00',  '16:00:00',    '11:00:00'    '11:15:00',  '13:00:00',  '13:30:00',    '6383017'),
-        ('2022-11-04',  '10:00:00',  '15:00:00',    '13:00:00',   '13:15:00',  None,      None,        '2795091'),
-        ('2022-11-05',  '10:00:00',  '18:00:00',    '13:00:00',   '13:15:00',  '15:00:00',  '15:30:00',    '2799911'),
-        ('2022-11-06',  '11:00:00',  '19:00:00',    '14:00:00',   '14:15:00',  '16:00:00',  '16:30:00',    '3021812'),
-        ('2022-11-07',  '13:00:00',  '17:00:00',    None,       None,      None,      None,        '7579383'),
-        ('2022-11-08',  '13:00:00',  '21:00:00',    '16:00:00',   '16:15:00',  '18:00:00'   '18:30:00',    '1944186'),
-        ('2022-11-09',  '15:00:00',  '20:00:00',    '18:00:00',   '18:15:00',  None,      None,         '1314667'),
-        ('2022-11-10',  '17:00:00',  '21:00:00',    None,       None,      None,      None,         '4145223'),
+        ('2022-11-01', '07:00:00', '11:00:00', None, None, None, None, '4916879'),
+        ('2022-11-02', '07:00:00', '12:00:00', '10:00:00', '10:15:00', None, None, '5307392'),
+        ('2022-11-03', '08:00:00', '16:00:00', '11:00:00', '11:15:00', '13:00:00', '13:30:00', '6383017'),
+        ('2022-11-04', '10:00:00', '15:00:00', '13:00:00', '13:15:00', None, None, '2795091'),
+        ('2022-11-05', '10:00:00', '18:00:00', '13:00:00', '13:15:00', '15:00:00', '15:30:00', '2799911'),
+        ('2022-11-06', '11:00:00', '19:00:00', '14:00:00', '14:15:00', '16:00:00', '16:30:00', '3021812'),
+        ('2022-11-07', '13:00:00', '17:00:00', None, None, None, None, '7579383'),
+        ('2022-11-08', '13:00:00', '21:00:00', '16:00:00', '16:15:00', '18:00:00', '18:30:00', '1944186'),
+        ('2022-11-09', '15:00:00', '20:00:00', '18:00:00', '18:15:00', None, None, '1314667'),
+        ('2022-11-10', '17:00:00', '21:00:00', None, None, None, None, '4145223'),
     ]
     mycursor.executemany(employee_time_worked, values)
     mydb.commit()
@@ -269,20 +270,19 @@ def fill_tables():
         (500, 'Accounting / Payroll', 30, 'Y', 'N'),
         (600, 'Logistics', 25, 'Y', 'N'),
     ]
-    mycursor.executemany(position, values)
+    mycursor.executemany(positions, values)
     mydb.commit()
     print(mycursor.rowcount, " row weres inserted into position table")
 
     # fill zip code table
     zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s,%s,%s,%s)"
-
     values = [
         (68111, 'Omaha', 'NE', 'USA'),
         (50310, 'Des Moines', 'IA', 'USA'),
         (53188, 'Waukesha', 'WI', 'USA'),
         (27513, 'Cary', 'NC', 'USA'),
         (52501, 'Ottumwa', 'IA', 'USA'),
-        (51537, 'Harland', 'IA', 'USA'),
+        (51537, 'Harlan', 'IA', 'USA')
     ]
     mycursor.executemany(zip_lookup, values)
     mydb.commit()
@@ -290,7 +290,6 @@ def fill_tables():
 
     # fill department table
     deparment = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
-
     values = [
         (1000, 'Owners', '6930090'),
         (2000, 'Finance', 6383017),
@@ -299,11 +298,11 @@ def fill_tables():
         (5000, 'Production', 7767463),
         (6000, 'Distribution', 1944186),
     ]
-    mycursor.executemany(deparment, values)
+    mycursor.executemany(department, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into department table")
+    print(mycursor.rowcount, "rows were inserted into department table")
 
-    # employee_alternate
+    # fill employee_alternate
     employee_alternate = "INSERT INTO employee_alternate (Street_Address_1, Street_Address_2, Zip, Phone_Number, Email_Address, Term_Date, Term_Reason, Rehireable, SSN, DOB, Employee_ID) VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)"
 
     values = [
