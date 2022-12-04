@@ -45,8 +45,10 @@ def print_tables():
 
     cursor.execute("SELECT * FROM supply_order;")
 
+    results = cursor.fetchall()
+
     print("\n***Supply Order***")
 
     for tables in results:
         print(
-            f"Supply Order ID: {tables[0]}\nTotal Cost: {tables[1]}\nOrder Date: {tables[2]}\nOrder Method: {tables[3]}\nTracking Number: {tables[4]}\nCarrier:{tables[5]}\nEstimated Delivery Date: {tables[6]}\nActual Delivery Date: {tables[7]}Actual Delivery Date: {tables[8]}\nSupplier ID; {tables[9]}\n")
+            f"Supply Order ID: {tables[0]}\nTotal Cost: {tables[1]}\nOrder Date: {tables[2]}\nOrder Method: {tables[3]}\nTracking Number: {tables[4]}\nCarrier: {tables[5]}\nEstimated Delivery Date: {tables[6]}\nActual Delivery Date: {tables[7]}\nSupplier ID: {tables[8]}\n")
