@@ -92,7 +92,7 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, " rows were inserted into the wine table")
 
-    # Batch table
+    # fill batch table
     batch = ("INSERT INTO batch (Batch_ID, Bottled_Date, Expiration_Date, Quantity, Wine_id) "
             "VALUES (%s, %s, %s, %s, %s)")
     values = [
@@ -107,7 +107,23 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, " rows were inserted into the batch table")
 
-    #fill wine_order_details table
+    # fill wine_order table
+    wine_order = ("INSERT INTO wine_order (Wine_Order_ID, Total_Cost, Order_Date, Order_Method, "
+                "Order_Estimated_Delivery_Date, Order_Actual_Delivery_Date, Distributor_ID)" "VALUES(%s,%s,%s,%s,%s,%s,%s)")
+    values = [
+        (1154, 1,500.00, 2022-06-24 11:20, Post, 2022-12-01, 2022-12-01 10:04, 441)
+        (1155, 1,500.00, 2022-02-10 14:14, Online, 2022-11-25, 2022-11-23 12:35, 342)
+        (1156, 1,200.00, 2021-11-15 15:10, Phone, 2022-11-13, 2022-11-17 09:10, 775)
+        (1157, 800.00, 2022-07-10 09:20, Online, 2022-10-29, 2022-10-27 03:20, 889)
+        (1158, 250.00, 2021-04-19 16:09, Post, 2022-11-16, 2022-11-16 02:15, 442)
+        (1159, 1,600.00, 2020-12-20 08:15, Phone, 2022-10-02, 2022-09-30 09:00, 332)
+    ]
+    mycursor.executemany(wine_order, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into wine_order table")
+
+
+    # fill wine_order_details table
     wine_order_details = "INSERT INTO wine_order_details (Wine_Order_ID, Wine_ID, Quantity_Ordered) VALUES(%s,%s,%s)"
     values = [
         (1154, 1, 100),
@@ -121,6 +137,25 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, " rows were inserted into the wine_order_details table")
     
+    # fill distributor_table
+    distributor = ("INSERT INTO distributor (Distributor_ID, Name, Street_Address_1, Street_Address_2, Zip, Contact_First_Name, Contact_Last_Name, "
+                " Phone_Number, Email_Address, Active)"
+                "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
+    values = [
+        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', 'NULL', 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 'Y'),
+        (342, 'A1 Beer and Liquor','693343 Main Street' , 'NULL', 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 'Y'),
+        (775, 'Bakers Grocery', '4298 Merlot Place', 'NULL', 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 'Y'),
+        (889, 'Wine Club Platinum', '9899 Rocket Road', 'NULL', 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 'Y'),
+        (442, 'Wine Styles Club', '22 Canary Road', 'NULL', 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 'Y'),
+        (332, 'Cheesecake Factory', '555 Cake Drive', 'NULL', 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 'Y'),
+ 
+    ]
+    mycursor.executemany(distributor, values)
+    mydb.commit()
+    print(mycursor.rowcount, "row were inserted into distributor table")
+
+
+
     # fill wine_distributor_details table
     wine_distributor_details = "INSERT INTO wine_distributor_details (Wine_ID, Distributor_ID) VALUES(%s,%s)"
     values = [
