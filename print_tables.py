@@ -1,6 +1,6 @@
 import mysql.connector
 
-def main():
+def print_tables():
 
     db = mysql.connector.connect(
         user="bacchus_user",
@@ -11,7 +11,7 @@ def main():
 
     cursor = db.cursor()
     
-        cursor.execute("Show tables;")
+    cursor.execute("Show tables;")
 
     results = cursor.fetchall()
 
