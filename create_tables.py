@@ -59,7 +59,7 @@ def create_tables():
         # create supplies table
         ("CREATE TABLE supplies (Supply_ID INT NOT NULL, Name VARCHAR(25) NOT NULL, Description VARCHAR(45), "
          "Onhand_Quantity INT NOT NULL, Unit_Price DECIMAL(6,2) NOT NULL, Supplier_ID INT NOT NULL, "
-         "Supply_Order_ID INT NOT NULL, PRIMARY KEY(Supply_ID));"),
+         "PRIMARY KEY(Supply_ID));"),
         # create supply_order table
         ("CREATE TABLE supply_order (Supply_Order_ID INT NOT NULL, Total_Cost DECIMAL(10,2) NOT NULL, "
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
