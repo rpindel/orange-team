@@ -107,8 +107,69 @@ def print_tables():
 
     results = cursor.fetchall()
 
-    print("\n***Wine Distributor Details")
+    print("\n***Wine Distributor Details***")
 
     for tables in results:
         print(
             f"Wine ID: {tables[0]}\nDistributor ID: {tables[1]}\n")
+
+#check code from here down.
+    cursor.execute("SELECT * FROM employee;")
+
+    results = cursor.fetchall()
+
+    print("\n***Employee***")
+
+    for tables in results:
+        print(
+            f"Employee ID: {tables[0]}\nFirst Name: {tables[1]}\nLast Name: {tables[2]}\nHire Date: {tables[3]}\nStart Date: {tables[4]}\nActive: {tables[5]}\nDepartment ID: {tables[6]}\nPosition ID: {tables[7]}\n")
+
+    cursor.execute("SELECT * FROM employee_time_worked;")
+
+    results = cursor.fetchall()
+
+    print("\n***Employee Time Worked***")
+
+    for tables in results:
+        print(
+            f"Date: {tables[0]}\nClock In: {tables[1]}\nClock Out: {tables[2]}\nStart Break: {tables[3]}\nEnd Break: {tables[4]}\nStart Lunch: {tables[5]}\nEnd Lunch: {tables[6]}\nEmployee ID: {tables[7]}\n")
+
+    cursor.execute("SELECT * FROM positions;")
+
+    results = cursor.fetchall()
+
+    print("\n***Positions***")
+
+    for tables in results:
+        print(
+            f"Position ID: {tables[0]}\nTitle: {tables[1]}\nPay: {tables[2]}\nHourly(1)/Salary(0): {tables[3]}\nSupervisor Y(1)/N(0): {tables[4]}\n")
+
+    cursor.execute("SELECT * FROM zip_lookup;")
+
+    results = cursor.fetchall()
+
+    print("\n***Zipcode Lookup***")
+
+    for tables in results:
+        print(
+            f"Zip Code: {tables[0]}\nCity: {tables[1]}\nState: {tables[2]}\nCountry: {tables[3]}\n")
+
+    cursor.execute("SELECT * FROM department;")
+
+    results = cursor.fetchall()
+
+    print("\n***Departments***")
+
+    for tables in results:
+        print(
+            f"Department ID: {tables[0]}\nName: {tables[1]}\nDepartment Head: {tables[2]}\n")
+
+    cursor.execute("SELECT * FROM employee_alternate;")
+
+    results = cursor.fetchall()
+
+    print("\n***Employee Alternate***")
+
+    for tables in results:
+        print(
+            f"Address 1: {tables[0]}\nAddress 2: {tables[1]}\nZip Code: {tables[2]}\nPhone: {tables[3]}\nEmail: {tables[4]}\nTermination Date: {tables[5]}\nTermination Reason: {tables[6]}\nEligible For Rehire Y(1)/N(0): {tables[7]}\nSSN: {tables[8]}\nDOB: {tables[9]}\nEmployee ID: {tables[10]}\n")
