@@ -29,8 +29,8 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supplier table")
 
     # Supplies table
-    supplies = ("INSERT INTO supplies (supply_ID, name, description, onhand_quantity, unit_price, Supplier_ID,"
-                "Supply_order_ID)"
+    supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID,"
+                "Supply_Order_ID)"
                 "VALUES (%s, %s, %s, %s, %s, %s, %s)")
     values = [
         (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1, 1111),
@@ -45,7 +45,7 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supplies table")
 
     # Supply_order_details table
-    supply_order_details = ("INSERT INTO supply_order_details (supply_order_ID, Supply_ID, quantity_ordered)"
+    supply_order_details = ("INSERT INTO supply_order_details (Supply_Order_ID, Supply_ID, Quantity_Ordered)"
                             "VALUES (%s, %s, %s)")
     values = [
         (1111, 1, 10000),
@@ -79,7 +79,7 @@ def fill_tables():
     # print(mycursor.rowcount, "was inserted into supply order table")
 
     # Wine table
-    wine = "INSERT INTO Wine (Wine_ID, Name, Style, onhand_quantity, Batch_id, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
+    wine = "INSERT INTO wine (Wine_ID, Name, Style, Onhand_Quantity, Batch_ID, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
     values = [
         (1, 'Dark and Red', 'Merlot', 300, 2022010101, 15.00),
         (2, 'Crimson Silk', 'Cabernet', 257, 2022010102, 15.00),
@@ -90,11 +90,11 @@ def fill_tables():
     ]
     mycursor.executemany(wine, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the Wine table")
+    print(mycursor.rowcount, " rows were inserted into the wine table")
 
- # Batch table
-    batch = "INSERT INTO batch (Batch_ID, Bottled_date, Expiration_Date, Quantity, Wine_id) "
-            "VALUES (%s, %s, %s, %s, %s)"
+    # Batch table
+    batch = ("INSERT INTO batch (Batch_ID, Bottled_Date, Expiration_Date, Quantity, Wine_id) "
+            "VALUES (%s, %s, %s, %s, %s)")
     values = [
         (2022010101, '2022-08-01', '2024-08-01', 200, 1),
         (2022010102, '2022-10-01', '2023-10-01', 200, 2),
@@ -105,11 +105,65 @@ def fill_tables():
     ]
     mycursor.executemany(batch, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the Batch table")
+    print(mycursor.rowcount, " rows were inserted into the batch table")
 
-# fill employee table
-    employee = ("INSERT INTO employee (Employee_ID, First_Name VARCHAR(25), Last_Name VARCHAR(25), Hire_Date DATE, Start_Date DATE, Active BIT(1), Department_ID INT, Position_ID INT)" 
-                "VALUES (%s,%s, %s,%s,%s,%s,%s)")
+    #fill wine_order_details table
+    wine_order_details = "INSERT INTO wine_order_details (Wine_Order_ID, Wine_ID, Quantity_Ordered) VALUES(%s,%s,%s)"
+    values = [
+        (1154, 1, 100),
+        (1155, 2, 100),
+        (1156, 3, 100),
+        (1157, 4, 100),
+        (1158, 5, 10),
+        (1159, 6, 40)
+    ]
+    mycursor.executemany(wine_order_details, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the wine_order_details table")
+    
+    # fill wine_distributor_details table
+    wine_distributor_details = "INSERT INTO wine_distributor_details (Wine_ID, Distributor_ID) VALUES(%s,%s)"
+    values = [
+        (1,	441),
+        (2,	441),
+        (3,	441),
+        (4,	441),
+        (5,	441),
+        (6,	441),
+        (1, 342),
+        (2,	342),
+        (3, 342),
+        (4,	342),
+        (5,	342),
+        (6,	342),
+        (1,	775),
+        (2,	775),
+        (3,	775),
+        (4,	775),
+        (5,	775),
+        (6,	775),
+        (1,	889),
+        (2,	889),
+        (3,	889),
+        (4,	889),
+        (5,	889),
+        (6,	889),
+        (1,	442),
+        (2,	442),
+        (3,	442),
+        (4,	442),
+        (1,	332),
+        (2,	332),
+        (3,	332),
+        (4,	332)
+    ]
+    mycursor.executemany(wine_distributor_details, values)
+    mydb.commit()
+    print(mycursor.rowcount, " rows were inserted into the wine_distributor_details table")
+    
+    # fill employee table
+    employee = ("INSERT INTO employee (Employee_ID, First_Name, Last_Name, Hire_Date, "
+    "Start_Date, Active, Department_ID, Position_ID) VALUES (%s,%s,%s,%s,%s,%s,%s)")
 
     values = [
         (6930090, 'Stan', 'Bacchus',	'2019-12-04',	'2019-12-04',	'Y', 1000, 100,),
@@ -143,31 +197,30 @@ def fill_tables():
     ]
     mycursor.executemany(employee, values)
     mydb.commit()
-    print(mycursor.rowcount, "rows were insert into employees table")
+    print(mycursor.rowcount, " rows were insert into employees table")
 
     # fill employee time worked table
-    employee_time_worked = ("INSERT INTO employee_time_worked (Date_Worked DATE, Clock_In_Shift TIME, Clock_Out_Shift TIME, Clock_Out_Break TIME, Clock_In_Break TIME, Clock_Out_Lunch TIME, Clock_In_Lunch TIME, Employee_ID INT)"
-                            "VALUES(%s,%s, %s,%s,%s,%s,%s)")
+    employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift, Clock_Out_Shift, Clock_Out_Break, "
+    "Clock_In_Break, Clock_Out_Lunch, Clock_In_Lunch, Employee_ID) VALUES(%s,%s,%s,%s,%s,%s,%s)")
 
     values = [
-    ('2022-11-01',  '07:00:00',  '11:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '4916879'),
-    ('2022-11-02',  '07:00:00',	 '12:00:00',	'10:00:00',	  '10:15:00',  'NULL',	    'NULL',	      '5307392'),
-    ('2022-11-03',  '08:00:00',  '16:00:00',    '11:00:00'    '11:15:00',  '13:00:00',  '13:30:00',    '6383017'),
-    ('2022-11-04',  '10:00:00',  '15:00:00',    '13:00:00',   '13:15:00',  'NULL',      'NULL',        '2795091'),
-    ('2022-11-05',  '10:00:00',  '18:00:00',    '13:00:00',   '13:15:00',  '15:00:00',  '15:30:00',    '2799911'),
-    ('2022-11-06',  '11:00:00',  '19:00:00',    '14:00:00',   '14:15:00',  '16:00:00',  '16:30:00',    '3021812'),
-    ('2022-11-07',  '13:00:00',  '17:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '7579383'),
-    ('2022-11-08',  '13:00:00',  '21:00:00',    '16:00:00',   '16:15:00',  '18:00:00'   '18:30:00',    '1944186'),
-    ('2022-11-09',  '15:00:00',  '20:00:00',    '18:00:00',   '18:15:00',  'NULL',      'NULL',         '1314667'),
-    ('2022-11-10',  '17:00:00',  '21:00:00',    'NULL',       'NULL',      'NULL',      'NULL',         '4145223'),
+        ('2022-11-01',  '07:00:00',  '11:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '4916879'),
+        ('2022-11-02',  '07:00:00',	 '12:00:00',	'10:00:00',	  '10:15:00',  'NULL',	    'NULL',	      '5307392'),
+        ('2022-11-03',  '08:00:00',  '16:00:00',    '11:00:00'    '11:15:00',  '13:00:00',  '13:30:00',    '6383017'),
+        ('2022-11-04',  '10:00:00',  '15:00:00',    '13:00:00',   '13:15:00',  'NULL',      'NULL',        '2795091'),
+        ('2022-11-05',  '10:00:00',  '18:00:00',    '13:00:00',   '13:15:00',  '15:00:00',  '15:30:00',    '2799911'),
+        ('2022-11-06',  '11:00:00',  '19:00:00',    '14:00:00',   '14:15:00',  '16:00:00',  '16:30:00',    '3021812'),
+        ('2022-11-07',  '13:00:00',  '17:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '7579383'),
+        ('2022-11-08',  '13:00:00',  '21:00:00',    '16:00:00',   '16:15:00',  '18:00:00'   '18:30:00',    '1944186'),
+        ('2022-11-09',  '15:00:00',  '20:00:00',    '18:00:00',   '18:15:00',  'NULL',      'NULL',         '1314667'),
+        ('2022-11-10',  '17:00:00',  '21:00:00',    'NULL',       'NULL',      'NULL',      'NULL',         '4145223'),
     ]
     mycursor.executemany(employee_time_worked, values)
     mydb.commit()
-    print(mycursor.rowcount, "rows were inserted into Employee Time Worked Table")
+    print(mycursor.rowcount, " rows were inserted into Employee Time Worked Table")
 
-    # fill position table
-    position = ("INSERT INTO position (Position_ID, Position_Title VARCHAR(25), Pay_Grade INT, Hourly BIT(1), Supervisory BIT(1))" 
-                "VALUES (%s,%s, %s,%s,%s)")
+    # fill positions table
+    position = "INSERT INTO position (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
 
     values = [
         (100, 'Owner', 'Null', 'N','Y'),
@@ -183,11 +236,10 @@ def fill_tables():
     ]
     mycursor.executemany(position, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into position table")
+    print(mycursor.rowcount, " row weres inserted into position table")
 
     # fill zip code table
-    zip_lookup = ("INSERT INTO zip_lookup(Zip INT, City VARCHAR(25), State VARCHAR(10), Country VARCHAR(20))"
-                  "VALUES (%s, %s,%s,%s)")
+    zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s,%s,%s,%s)"
 
     values = [
         (68111, 'Omaha', 'NE', 'USA'),
@@ -199,14 +251,13 @@ def fill_tables():
     ]
     mycursor.executemany(zip_lookup, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into zip table")
+    print(mycursor.rowcount, " rows were inserted into zip table")
 
     # fill department table
-    deparment = ("INSERT INTO department(Department_ID INT, Department_Name VARCHAR(15), Department_Head INT (Employee_ID))"
-                  "VALUES (%s, %s,%s)")
+    deparment = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
 
     values = [
-        (1000, 'owners', '6930090'),
+        (1000, 'Owners', '6930090'),
         (2000, 'Finance', 6383017),
         (3000, 'Marketing', 748051),
         (4000, 'Facilites', 5307392),
@@ -215,11 +266,10 @@ def fill_tables():
     ]
     mycursor.executemany(deparment, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into department table")
+    print(mycursor.rowcount, " rows were inserted into department table")
 
     # employee_alternate
-    employee_alternate = ( "INSERT INTO employee_alternate( Stree_Address_1 VARCHAR(35), Stree_Address_1 VARCHAR(35) , Zip INT, Phone_Number VARCHAR(15), Email_Address VARCHAR(45), Term_Date DATE, Term_Reason VARCHAR(25), Rehireable BIT(1), SSN INT UNIQUE, DOB DATE, Employee_ID INT )"
-        "VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)")
+    employee_alternate = "INSERT INTO employee_alternate (Street_Address_1, Street_Address_2, Zip, Phone_Number, Email_Address, Term_Date, Term_Reason, Rehireable, SSN, DOB, Employee_ID) VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)"
 
     values = [
     ('3924 Rose Stree',	'NULL', 68111, '402-966-8247',	'Stantheman@gmail.com',	'NULL',	'NULL',	'NULL',	748149274,	'1984-11-11', 6930090),
@@ -253,4 +303,4 @@ def fill_tables():
     ]
     mycursor.executemany(employee_alternate, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into employee alternate table")
+    print(mycursor.rowcount, " rows were inserted into employee alternate table")
