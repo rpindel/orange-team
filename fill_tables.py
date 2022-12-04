@@ -11,7 +11,7 @@ mycursor = mydb.cursor()
 
 def fill_tables():
     # fill supplier table
-    supplier = ("INSERT INTO supplier (supplier_ID, name, Street_Address_1, Street_address_2, Zip, Contact_First_Name,"
+    supplier = ("INSERT INTO supplier (supplier_ID, name, Street_Address_1, Street_Address_2, Zip, Contact_First_Name,"
                 "Contact_Last_Name, Phone_Number, Email_Address, Order_Method, Order_Method_Details, Active)"
                 "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)")
     values = [
