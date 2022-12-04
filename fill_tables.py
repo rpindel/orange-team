@@ -108,14 +108,15 @@ def fill_tables():
 
     # fill wine_order table
     wine_order = ("INSERT INTO wine_order (Wine_Order_ID, Total_Cost, Order_Date, Order_Method, "
-                "Order_Estimated_Delivery_Date, Order_Actual_Delivery_Date, Distributor_ID)" "VALUES(%s,%s,%s,%s,%s,%s,%s)")
+                  "Order_Estimated_Delivery_Date, Order_Actual_Delivery_Date, Distributor_ID)"
+                  "VALUES(%s,%s,%s,%s,%s,%s,%s)")
     values = [
-        (1154, 1,500.00, 2022-06-24 11:20, Post, 2022-12-01, 2022-12-01 10:04, 441)
-        (1155, 1,500.00, 2022-02-10 14:14, Online, 2022-11-25, 2022-11-23 12:35, 342)
-        (1156, 1,200.00, 2021-11-15 15:10, Phone, 2022-11-13, 2022-11-17 09:10, 775)
-        (1157, 800.00, 2022-07-10 09:20, Online, 2022-10-29, 2022-10-27 03:20, 889)
-        (1158, 250.00, 2021-04-19 16:09, Post, 2022-11-16, 2022-11-16 02:15, 442)
-        (1159, 1,600.00, 2020-12-20 08:15, Phone, 2022-10-02, 2022-09-30 09:00, 332)
+        (1154, 1500.00, '2022-06-24 11:20', 'Post', '2022-12-01', '2022-12-01 10:04', 441),
+        (1155, 1500.00, '2022-02-10 14:14', 'Online', '2022-11-25', '2022-11-23 12:35', 342),
+        (1156, 1200.00, '2021-11-15 15:10', 'Phone', '2022-11-13', '2022-11-17 09:10', 775),
+        (1157, 800.00, '2022-07-10 09:20', 'Online', '2022-10-29', '2022-10-27 03:20', 889),
+        (1158, 250.00, '2021-04-19 16:09', 'Post', '2022-11-16', '2022-11-16 02:15', 442),
+        (1159, 1600.00, '2020-12-20 08:15', 'Phone', '2022-10-02', '2022-09-30 09:00', 332)
     ]
     mycursor.executemany(wine_order, values)
     mydb.commit()
@@ -146,7 +147,7 @@ def fill_tables():
         (775, 'Bakers Grocery', '4298 Merlot Place', None, 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', '1'),
         (889, 'Wine Club Platinum', '9899 Rocket Road', None, 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', '1'),
         (442, 'Wine Styles Club', '22 Canary Road', None, 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', '1'),
-        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', '1'),
+        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', '1')
      ]
     mycursor.executemany(distributor, values)
     mydb.commit()
@@ -194,7 +195,7 @@ def fill_tables():
     
     # fill employee table
     employee = ("INSERT INTO employee (Employee_ID, First_Name, Last_Name, Hire_Date, "
-    "Start_Date, Active, Department_ID, Position_ID) VALUES (%s,%s,%s,%s,%s,%s,%s)")
+    "Start_Date, Active, Department_ID, Position_ID) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)")
     values = [
         (6930090, 'Stan', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100,),
         (1380275, 'Davis', 'Bacchus', '2019-12-04', '2019-12-04', 1, 1000, 100),
@@ -251,7 +252,7 @@ def fill_tables():
     print(mycursor.rowcount, " rows were inserted into Employee Time Worked Table")
 
     # fill positions table
-    position = "INSERT INTO position (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
+    positions = "INSERT INTO positions (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
 
     values = [
         (100, 'Owner', None, '0','1'),
@@ -267,7 +268,7 @@ def fill_tables():
     ]
     mycursor.executemany(positions, values)
     mydb.commit()
-    print(mycursor.rowcount, " row weres inserted into position table")
+    print(mycursor.rowcount, " rows were inserted into position table")
 
     # fill zip code table
     zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s,%s,%s,%s)"
@@ -284,7 +285,7 @@ def fill_tables():
     print(mycursor.rowcount, " rows were inserted into zip table")
 
     # fill department table
-    deparment = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
+    department = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
     values = [
         (1000, 'Owners', 6930090),
         (2000, 'Finance', 6383017),
