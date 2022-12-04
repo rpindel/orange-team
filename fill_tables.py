@@ -19,7 +19,7 @@ def fill_tables():
          'angel.garay@shws.com', 'online', 'these are details', 1),
         (2, 'Republic National', '1114 Baldwin ST', 'and a half', 45678, 'Damian', 'Brown', '254-568-1245',
          'damian.brown@repubnat.com', 'phone', 'these are details', 0),
-        (3, 'Breakthru', '4587 Somewhere RD', 'Null', 25896, 'Bob', 'Lasname', '896-456-2580',
+        (3, 'Breakthru', '4587 Somewhere RD', None, 25896, 'Bob', 'Lasname', '896-456-2580',
          'blas@breakthru.com', 'post', 'prefers correspondence by mail', 1),
         (4, 'Young\'s market', '1 Young CIR', 'Suite 100', 56489, 'George', 'Young', '321-456-9870',
          'gyoung@youngsmarket.com', 'online', 'I\'m not really sure what should be here', 1),
@@ -142,12 +142,12 @@ def fill_tables():
                 " Phone_Number, Email_Address, Active)"
                 "VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)")
     values = [
-        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', 'NULL', 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 'Y'),
-        (342, 'A1 Beer and Liquor','693343 Main Street' , 'NULL', 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 'Y'),
-        (775, 'Bakers Grocery', '4298 Merlot Place', 'NULL', 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 'Y'),
-        (889, 'Wine Club Platinum', '9899 Rocket Road', 'NULL', 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 'Y'),
-        (442, 'Wine Styles Club', '22 Canary Road', 'NULL', 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 'Y'),
-        (332, 'Cheesecake Factory', '555 Cake Drive', 'NULL', 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 'Y'),
+        (441, 'Hy - vee Wine and Spirits', '14195 Corkey Road', None, 68111, 'Sally', 'Sanders', 7012329585, 'salsan@hyveeus.com', 'Y'),
+        (342, 'A1 Beer and Liquor','693343 Main Street' , None, 50310, 'John', 'Coleman', 6239256644, 'JColeman@a1liquors.com', 'Y'),
+        (775, 'Bakers Grocery', '4298 Merlot Place', None, 53188, 'Candace', 'Bidson', 5159544232, 'Bidson@bakersdillons.com', 'Y'),
+        (889, 'Wine Club Platinum', '9899 Rocket Road', None, 27513, 'Asher', 'Jones', 7128453980, 'AJones@wineclub.com', 'Y'),
+        (442, 'Wine Styles Club', '22 Canary Road', None, 52501, 'Katie', 'Brown', 3764548878, 'Brown@winestyles.com', 'Y'),
+        (332, 'Cheesecake Factory', '555 Cake Drive', None, 51537, 'Spencer', 'Hilgen', 5315585933, 'hilgen@cheesecake.com', 'Y'),
  
     ]
     mycursor.executemany(distributor, values)
@@ -239,16 +239,16 @@ def fill_tables():
     "Clock_In_Break, Clock_Out_Lunch, Clock_In_Lunch, Employee_ID) VALUES(%s,%s,%s,%s,%s,%s,%s)")
 
     values = [
-        ('2022-11-01',  '07:00:00',  '11:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '4916879'),
-        ('2022-11-02',  '07:00:00',	 '12:00:00',	'10:00:00',	  '10:15:00',  'NULL',	    'NULL',	      '5307392'),
+        ('2022-11-01',  '07:00:00',  '11:00:00',    None,       None,      None,      None,        '4916879'),
+        ('2022-11-02',  '07:00:00',	 '12:00:00',	'10:00:00',	  '10:15:00',  None,	    None,	      '5307392'),
         ('2022-11-03',  '08:00:00',  '16:00:00',    '11:00:00'    '11:15:00',  '13:00:00',  '13:30:00',    '6383017'),
-        ('2022-11-04',  '10:00:00',  '15:00:00',    '13:00:00',   '13:15:00',  'NULL',      'NULL',        '2795091'),
+        ('2022-11-04',  '10:00:00',  '15:00:00',    '13:00:00',   '13:15:00',  None,      None,        '2795091'),
         ('2022-11-05',  '10:00:00',  '18:00:00',    '13:00:00',   '13:15:00',  '15:00:00',  '15:30:00',    '2799911'),
         ('2022-11-06',  '11:00:00',  '19:00:00',    '14:00:00',   '14:15:00',  '16:00:00',  '16:30:00',    '3021812'),
-        ('2022-11-07',  '13:00:00',  '17:00:00',    'NULL',       'NULL',      'NULL',      'NULL',        '7579383'),
+        ('2022-11-07',  '13:00:00',  '17:00:00',    None,       None,      None,      None,        '7579383'),
         ('2022-11-08',  '13:00:00',  '21:00:00',    '16:00:00',   '16:15:00',  '18:00:00'   '18:30:00',    '1944186'),
-        ('2022-11-09',  '15:00:00',  '20:00:00',    '18:00:00',   '18:15:00',  'NULL',      'NULL',         '1314667'),
-        ('2022-11-10',  '17:00:00',  '21:00:00',    'NULL',       'NULL',      'NULL',      'NULL',         '4145223'),
+        ('2022-11-09',  '15:00:00',  '20:00:00',    '18:00:00',   '18:15:00',  None,      None,         '1314667'),
+        ('2022-11-10',  '17:00:00',  '21:00:00',    None,       None,      None,      None,         '4145223'),
     ]
     mycursor.executemany(employee_time_worked, values)
     mydb.commit()
@@ -258,7 +258,7 @@ def fill_tables():
     position = "INSERT INTO position (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
 
     values = [
-        (100, 'Owner', 'Null', 'N','Y'),
+        (100, 'Owner', None, 'N','Y'),
         (120, 'Administrative Assistant', 20, 'Y', 'N'),
         (200, 'Sales', 30, 'N', 'N'),
         (220, 'Marketing', 25, 'N', 'N'),
@@ -307,34 +307,34 @@ def fill_tables():
     employee_alternate = "INSERT INTO employee_alternate (Street_Address_1, Street_Address_2, Zip, Phone_Number, Email_Address, Term_Date, Term_Reason, Rehireable, SSN, DOB, Employee_ID) VALUES (%s, %s,%s,%s,%s, %s,%s,%s,%s, %s,%s)"
 
     values = [
-    ('3924 Rose Stree',	'NULL', 68111, '402-966-8247',	'Stantheman@gmail.com',	'NULL',	'NULL',	'NULL',	748149274,	'1984-11-11', 6930090),
-    ('3205 Pearcy Avenue',	'Apt 10', 68111, '402-826-5015', 'Dbaccu80@yahoo.com',	'NULL',	'NULL',	'NULL',	251345289,	'1965-04-12', 1380275),
-    ('826 Westport Avenue',	'NULL',	68111,	'402-372-6785',	'Jcollinshi@yahoo.com',	'NULL',	'NULL',	'NULL',	634587654,	'1996-09-23', 6383017),
-    ('70 East Marlborough Avenue',	'NULL',	50310,	'515-392-9069',	'Rozzu4@gmail.com',	'NULL',	'NULL',	'NULL',	214375683,	'1990-10-03', 7480510),
-    ('7123 S. Glenwood St',	'NULL',	53188,	'262-601-9735',	'BobbyUl@gmail.com', 'NULL', 'NULL', 'NULL', 963620155,	'1994-04-20', 8995741),
-    ('446 North Ave', 'Apt 2',	27513,	'919-195-2072',	'Doyleman@hotmail.com',	'NULL',	'NULL',	'NULL',	135249771,	'1983-07-20', 7767463),
-    ('7603 Third Dr', 'Apt 3',	52501, '641-209-9539',	'Dogloverxooxxo@aol.com', 'NULL', 'NULL', 'NULL', 912662242, '1986-07-09', 1944186),
-    ('9423 Belmont Street',	'NULL',	51537,	'712-712-7573',	'Catlady44Elyse@gmail.com',	'NULL',	'NULL',	'NULL',	289979667,	'1974-05-23',	8613677),
-    ('12 Pineknoll St',	'NULL',	68111,	'402-817-7588',	'Clineantwan@gmail.com',	'NULL',	'NULL',	'NULL',	645881321,	'1997-06-23',	5687918),
-    ('3 West Street', 'NULL',	50310,	'515-738-5018',	'AFrankhappy111@icloud.com',	'NULL',	'NULL',	'NULL',91220286,	'2001-12-26',	2795091),
-    ('27 Old Colonial Ave',	'NULL',	53188,	'262-523-9023',	'TBird@icloud.com',	'NULL',	'NULL',	'NULL',	338355472,	'1976-10-02',	2799911),
-    ('167 Pine St',	'Suite 100',	27513,	'919-577-9325',	'Keirasmail@gmail.com',	'NULL',	'NULL',	'NULL',	817261829,	'1979-08-29',	1842386),
-    ('7172 NW. Saxon Ave',	'NULL',	52501,	'641-538-0399',	'C4Horne@yahoo.com',	'NULL',	'NULL',	'NULL',	373644533,	'1977-06-15',	1314667),
-    ('69 Sutor Ave',	'NULL',	51537,	'712-575-5087',	'Vinanyiah@aol.com',	'NULL',	'NULL',	'NULL',	844236731,	'1986-02-13',	3695025),
-    ('700 Valley Farms Ave',	'NULL',	68111,	'402-335-8005',	'Frosty0mia@icloud.com',	'NULL',	'NULL',	'NULL',	635478765,	'1992-04-16',	5937994),
-    ('80 SE. Hillside Road',	'NULL',	50310,	'515-253-1609',	'Adrianadolph@hotmail.com',	'NULL',	'NULL',	'NULL',	475645765,	'1983-01-04',	3021812),
-    ('7272C Linden Rd',	'NULL',	53188,	'262-858-7453',	'daviclark4312@aol.com',	'NULL',	'NULL',	'NULL',	870978909,	'2000-09-17',	5667699),
-    ('9684 Lees Creek Ave',	'NULL',	27513,	'919-304-6304',	'lexicalhoun99@gmail.com',	'NULL',	'NULL',	'NULL',	125432454,	'1999-01-30',	7579383),
-    ('796 Plymouth Street',	'NULL',	52501,	'641-712-6123',	'Parker7Hart@icloud.com',	'NULL',	'NULL',	'NULL',	745667546,	'1992-03-15',	4145223),
-    ('82 Roosevelt St',	'NULL',	51537,	'712-433-1562',	'Jord10A@aol.com',	'NULL',	'NULL',	'NULL',	987689879,	'1996-10-24',	5823178),
-    ('415 West Henry Smith St',	'NULL',	68111,	'402-674-8021',	'DH4632@gmail.com',	'NULL',	'NULL',	'NULL',	346554634,	'1991-05-23',	4180563),
-    ('9774 Birch Hill Rd',	'NULL',	50310,	'515-452-2415',	'herringml76@yahoo.com',	'NULL',	'NULL',	'NULL',	323243324,	'1993-07-09',	4916879),
-    ('215 Brookside Avenue',	'NULL',	53188,	'262-848-0672',	'mscaldwel@gmail.com',	'NULL',	'NULL',	'NULL',	524323453,	'1995-10-02',	5307392),
-    ('7874 Sunbeam Avenue',	'NULL',	27513,	'919-845-9528',	'alherb2060@icloud.com',	'NULL',	'NULL',	'NULL',	634536455,	'1998-01-21',	9685338),
-    ('7848 S. Clark St',	'NULL',	52501,	'641-525-3606',	'Ramseyem49@hotmail.com',	'NULL',	'NULL',	'NULL',	689575689,	'1989-05-04',	4059962),
-    ('827 NE. Vine St',	'NULL',	51537,	'712-657-6502',	'Sparzasar0u@icloud.com',	'NULL',	'NULL',	'NULL',	678586756,	'1988-12-13',	5939049),
-    ('7 North Bear Hill Ave',	'NULL',	68111,	'402-177-4774',	'branchbrantiago@gmail.com',	'NULL',	'NULL',	'NULL',	520296509,	'1987-03-26',	7863543),
-    ('70 North Summerhouse Street',	'NULL',	50310,	'515-974-2114',	'leonbig7474@aol.com',	'NULL',	'NULL',	'NULL',	980123098,	'1985-09-13',	9855487),
+    ('3924 Rose Stree',	None, 68111, '402-966-8247',	'Stantheman@gmail.com',	None,	None,	None,	748149274,	'1984-11-11', 6930090),
+    ('3205 Pearcy Avenue',	'Apt 10', 68111, '402-826-5015', 'Dbaccu80@yahoo.com',	None,	None,	None,	251345289,	'1965-04-12', 1380275),
+    ('826 Westport Avenue',	None,	68111,	'402-372-6785',	'Jcollinshi@yahoo.com',	None,	None,	None,	634587654,	'1996-09-23', 6383017),
+    ('70 East Marlborough Avenue',	None,	50310,	'515-392-9069',	'Rozzu4@gmail.com',	None,	None,	None,	214375683,	'1990-10-03', 7480510),
+    ('7123 S. Glenwood St',	None,	53188,	'262-601-9735',	'BobbyUl@gmail.com', None, None, None, 963620155,	'1994-04-20', 8995741),
+    ('446 North Ave', 'Apt 2',	27513,	'919-195-2072',	'Doyleman@hotmail.com',	None,	None,	None,	135249771,	'1983-07-20', 7767463),
+    ('7603 Third Dr', 'Apt 3',	52501, '641-209-9539',	'Dogloverxooxxo@aol.com', None, None, None, 912662242, '1986-07-09', 1944186),
+    ('9423 Belmont Street',	None,	51537,	'712-712-7573',	'Catlady44Elyse@gmail.com',	None,	None,	None,	289979667,	'1974-05-23',	8613677),
+    ('12 Pineknoll St',	None,	68111,	'402-817-7588',	'Clineantwan@gmail.com',	None,	None,	None,	645881321,	'1997-06-23',	5687918),
+    ('3 West Street', None,	50310,	'515-738-5018',	'AFrankhappy111@icloud.com',	None,	None,	None,91220286,	'2001-12-26',	2795091),
+    ('27 Old Colonial Ave',	None,	53188,	'262-523-9023',	'TBird@icloud.com',	None,	None,	None,	338355472,	'1976-10-02',	2799911),
+    ('167 Pine St',	'Suite 100',	27513,	'919-577-9325',	'Keirasmail@gmail.com',	None,	None,	None,	817261829,	'1979-08-29',	1842386),
+    ('7172 NW. Saxon Ave',	None,	52501,	'641-538-0399',	'C4Horne@yahoo.com',	None,	None,	None,	373644533,	'1977-06-15',	1314667),
+    ('69 Sutor Ave',	None,	51537,	'712-575-5087',	'Vinanyiah@aol.com',	None,	None,	None,	844236731,	'1986-02-13',	3695025),
+    ('700 Valley Farms Ave',	None,	68111,	'402-335-8005',	'Frosty0mia@icloud.com',	None,	None,	None,	635478765,	'1992-04-16',	5937994),
+    ('80 SE. Hillside Road',	None,	50310,	'515-253-1609',	'Adrianadolph@hotmail.com',	None,	None,	None,	475645765,	'1983-01-04',	3021812),
+    ('7272C Linden Rd',	None,	53188,	'262-858-7453',	'daviclark4312@aol.com',	None,	None,	None,	870978909,	'2000-09-17',	5667699),
+    ('9684 Lees Creek Ave',	None,	27513,	'919-304-6304',	'lexicalhoun99@gmail.com',	None,	None,	None,	125432454,	'1999-01-30',	7579383),
+    ('796 Plymouth Street',	None,	52501,	'641-712-6123',	'Parker7Hart@icloud.com',	None,	None,	None,	745667546,	'1992-03-15',	4145223),
+    ('82 Roosevelt St',	None,	51537,	'712-433-1562',	'Jord10A@aol.com',	None,	None,	None,	987689879,	'1996-10-24',	5823178),
+    ('415 West Henry Smith St',	None,	68111,	'402-674-8021',	'DH4632@gmail.com',	None,	None,	None,	346554634,	'1991-05-23',	4180563),
+    ('9774 Birch Hill Rd',	None,	50310,	'515-452-2415',	'herringml76@yahoo.com',	None,	None,	None,	323243324,	'1993-07-09',	4916879),
+    ('215 Brookside Avenue',	None,	53188,	'262-848-0672',	'mscaldwel@gmail.com',	None,	None,	None,	524323453,	'1995-10-02',	5307392),
+    ('7874 Sunbeam Avenue',	None,	27513,	'919-845-9528',	'alherb2060@icloud.com',	None,	None,	None,	634536455,	'1998-01-21',	9685338),
+    ('7848 S. Clark St',	None,	52501,	'641-525-3606',	'Ramseyem49@hotmail.com',	None,	None,	None,	689575689,	'1989-05-04',	4059962),
+    ('827 NE. Vine St',	None,	51537,	'712-657-6502',	'Sparzasar0u@icloud.com',	None,	None,	None,	678586756,	'1988-12-13',	5939049),
+    ('7 North Bear Hill Ave',	None,	68111,	'402-177-4774',	'branchbrantiago@gmail.com',	None,	None,	None,	520296509,	'1987-03-26',	7863543),
+    ('70 North Summerhouse Street',	None,	50310,	'515-974-2114',	'leonbig7474@aol.com',	None,	None,	None,	980123098,	'1985-09-13',	9855487),
     ]
     mycursor.executemany(employee_alternate, values)
     mydb.commit()
