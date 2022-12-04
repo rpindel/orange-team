@@ -28,7 +28,7 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supplier table")
 
-    # Supplies table
+    # fill supplies table
     supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID,"
                 "Supply_Order_ID)"
                 "VALUES (%s, %s, %s, %s, %s, %s, %s)")
@@ -44,7 +44,7 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supplies table")
 
-    # Supply_order_details table
+    # fill supply_order_details table
     supply_order_details = ("INSERT INTO supply_order_details (Supply_Order_ID, Supply_ID, Quantity_Ordered)"
                             "VALUES (%s, %s, %s)")
     values = [
@@ -59,11 +59,11 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, "rows were inserted into supply order details table")
 
+    # fill supply_order table
     supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
                     "Order_tracking_number, Order_delivery_carrier, Order_Estimated_Delivery_date,"
                     " Order_Actual_Delivery_Date, Supplier_ID)"
                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
-
     values = [
         (1111, 2500, '2022-04-21', 'online', '33783220542444073463', 'USPS', '2022-04-26', '2022-04-26 14:00:00', 1,),
         (2222, 12000, '2022-05-21', 'online', '33668316260356970224', 'USPS', '2022-05-26', '2022-05-25 14:30:00', 1,),
@@ -76,7 +76,7 @@ def fill_tables():
     mydb.commit()
     print(mycursor.rowcount, "was inserted into supply order table")
 
-    # Wine table
+    # fill wine table
     wine = "INSERT INTO wine (Wine_ID, Name, Style, Onhand_Quantity, Batch_ID, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
     values = [
         (1, 'Dark and Red', 'Merlot', 300, 2022010101, 15.00),
@@ -152,8 +152,6 @@ def fill_tables():
     mycursor.executemany(distributor, values)
     mydb.commit()
     print(mycursor.rowcount, "row were inserted into distributor table")
-
-
 
     # fill wine_distributor_details table
     wine_distributor_details = "INSERT INTO wine_distributor_details (Wine_ID, Distributor_ID) VALUES(%s,%s)"
@@ -233,7 +231,6 @@ def fill_tables():
     print(mycursor.rowcount, " rows were insert into employees table")
 
     # fill employee time worked table
-
     employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift , Clock_Out_Shift "
                             ", Clock_Out_Break , Clock_In_Break , Clock_Out_Lunch , "
                             "Clock_In_Lunch, Employee_ID)"
