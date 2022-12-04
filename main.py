@@ -12,5 +12,5 @@ import print_tables
 create_tables.drop_tables()
 create_tables.create_tables()
 fill_tables.fill_tables()
-# print_tables.print_tables()  # tentative name for this function
+print_tables.print_tables()  # tentative name for this function
 # create_tables.foreign_key_constraints()
