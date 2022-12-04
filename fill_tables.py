@@ -57,7 +57,7 @@ def fill_tables():
     ]
     mycursor.executemany(supply_order_details, values)
     mydb.commit()
-    print(mycursor.rowcount, "rows were inserted into supply order details table")
+    print(mycursor.rowcount, "rows were inserted into supply_order_details table")
 
     # fill supply_order table
     supply_order = ("INSERT INTO supply_order (supply_order_ID, total_cost, Order_date, Order_Method,"
@@ -74,7 +74,7 @@ def fill_tables():
     ]
     mycursor.executemany(supply_order, values)
     mydb.commit()
-    print(mycursor.rowcount, "was inserted into supply order table")
+    print(mycursor.rowcount, "rows were inserted into supply_order table")
 
     # fill wine table
     wine = "INSERT INTO wine (Wine_ID, Name, Style, Onhand_Quantity, Batch_ID, Cost) VALUES (%s, %s, %s, %s, %s, %s)"
@@ -88,7 +88,7 @@ def fill_tables():
     ]
     mycursor.executemany(wine, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the wine table")
+    print(mycursor.rowcount, "rows were inserted into wine table")
 
 
     # fill batch table
@@ -104,7 +104,7 @@ def fill_tables():
     ]
     mycursor.executemany(batch, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the batch table")
+    print(mycursor.rowcount, "rows were inserted into batch table")
 
     # fill wine_order table
     wine_order = ("INSERT INTO wine_order (Wine_Order_ID, Total_Cost, Order_Date, Order_Method, "
@@ -120,7 +120,7 @@ def fill_tables():
     ]
     mycursor.executemany(wine_order, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into wine_order table")
+    print(mycursor.rowcount, "rows were inserted into wine_order table")
 
 
     # fill wine_order_details table
@@ -135,7 +135,7 @@ def fill_tables():
     ]
     mycursor.executemany(wine_order_details, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the wine_order_details table")
+    print(mycursor.rowcount, "rows were inserted into wine_order_details table")
     
     # fill distributor_table
     distributor = ("INSERT INTO distributor (Distributor_ID, Name, Street_Address_1, Street_Address_2, Zip, Contact_First_Name, Contact_Last_Name, "
@@ -151,7 +151,7 @@ def fill_tables():
      ]
     mycursor.executemany(distributor, values)
     mydb.commit()
-    print(mycursor.rowcount, "row were inserted into distributor table")
+    print(mycursor.rowcount, "rows were inserted into distributor table")
 
     # fill wine_distributor_details table
     wine_distributor_details = "INSERT INTO wine_distributor_details (Wine_ID, Distributor_ID) VALUES(%s,%s)"
@@ -191,7 +191,7 @@ def fill_tables():
     ]
     mycursor.executemany(wine_distributor_details, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into the wine_distributor_details table")
+    print(mycursor.rowcount, "rows were inserted into wine_distributor_details table")
     
     # fill employee table
     employee = ("INSERT INTO employee (Employee_ID, First_Name, Last_Name, Hire_Date, "
@@ -228,7 +228,7 @@ def fill_tables():
     ]
     mycursor.executemany(employee, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were insert into employees table")
+    print(mycursor.rowcount, "rows were insert into employee table")
 
     # fill employee time worked table
     employee_time_worked = ("INSERT INTO employee_time_worked (Date, Clock_In_Shift , Clock_Out_Shift "
@@ -249,7 +249,7 @@ def fill_tables():
     ]
     mycursor.executemany(employee_time_worked, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into Employee Time Worked Table")
+    print(mycursor.rowcount, "rows were inserted into employee_time_worked table")
 
     # fill positions table
     positions = "INSERT INTO positions (Position_ID, Position_Title, Pay_Grade, Hourly, Supervisory) VALUES (%s,%s,%s,%s,%s)"
@@ -268,7 +268,7 @@ def fill_tables():
     ]
     mycursor.executemany(positions, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into position table")
+    print(mycursor.rowcount, "rows were inserted into positions table")
 
     # fill zip code table
     zip_lookup = "INSERT INTO zip_lookup(Zip, City, State, Country) VALUES (%s,%s,%s,%s)"
@@ -282,7 +282,7 @@ def fill_tables():
     ]
     mycursor.executemany(zip_lookup, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into zip table")
+    print(mycursor.rowcount, "rows were inserted into zip table")
 
     # fill department table
     department = "INSERT INTO department (Department_ID, Department_Name, Department_Head) VALUES (%s,%s,%s)"
@@ -332,4 +332,4 @@ def fill_tables():
     ]
     mycursor.executemany(employee_alternate, values)
     mydb.commit()
-    print(mycursor.rowcount, " rows were inserted into employee alternate table")
+    print(mycursor.rowcount, "rows were inserted into employee_alternate table")
