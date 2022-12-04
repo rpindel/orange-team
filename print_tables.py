@@ -18,5 +18,6 @@ def print_tables():
     print("\n***Suppliers***")
 
     for tables in results:
-        print("Supplier ID: {}\nName: {}\nAddress: {}\nAddress2: {}\nZip code: {}\nFirst name: {}\nLast name: {}\nPhone: {}\nEmail: {}\nOrder Method: {}\nMisc: {}\nActive: {}\n".format(tables[0], tables[1], tables[2], tables[3], tables[4], tables[5], tables[6], tables[7], tables[8], tables[9], tables[10], tables[11], tables[12]))
+        print(
+            f"Supplier ID: {tables[0]}\nName: {tables[1]}\nAddress: {tables[2]}\nAddress2: {tables[3]}\nZip code: {tables[4]}\nFirst name: {tables[5]}\nLast name: {tables[6]}\nPhone: {tables[7]}\nEmail: {tables[8]}\nOrder Method: {tables[9]}\nMisc: {tables[10]}\nActive: {tables[11]}\n")
         print("\n")
