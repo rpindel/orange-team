@@ -12,7 +12,7 @@ mycursor = mydb.cursor()
 def wine_orders():
     # Execute the script using the cursor
     mycursor.execute(
-        "select w.name, w.onhand_quantity, wo.order_date, wo.wine_order_id"
+        "select w.name, w.onhand_quantity, wo.total_cost, wo.order_date, wo.wine_order_id"
         " from wine w inner join wine_order_details wod on w.wine_id = wod.wine_id "
         "inner join wine_order wo on wod.wine_order_id = wo.wine_order_id order by w.name")
 
@@ -20,7 +20,7 @@ def wine_orders():
     results = mycursor.fetchall()
     for row in results:
         print(
-            f"Wine Name: {row[0]}\nOnhand Quantity: {row[1]}\nOrder Date: {row[2]}\nWine Order ID: {row[3]}"
+            f"Wine Name: {row[0]}\nOnhand Quantity: {row[1]}\nTotal Cost: {row[2]}\nOrder Date: {row[3]}\nWine Order ID: {row[4]}"
         )
         print("\n")
 
@@ -48,11 +48,14 @@ def employee_time():
 
 
 def inventory():
-    mycursor.execute('select * from supplies')
+
+    mycursor.execute('''select s.name, so.supply_order_id, so.total_cost, so.order_date,
+    so.order_estimated_delivery_date,so.order_actual_delivery_date,
+    (timestampdiff(DAY,so.order_estimated_delivery_date,so.order_actual_delivery_date))
+    as "Actual vs Estimated Delivery" from supplier s inner join supply_order so
+    on s.supplier_id = so.supplier_id;''')
 
     details = mycursor.fetchall()
 
     for detail in details:
-        print('''Supply ID: {}\nName: {}\nDescription: {}\nOn-Hand Quantity: {}\nUnit_Price: {}\nSupplier ID: {}
-        '''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5]))
-        # print("\n")
+        print('''Supplier:{}\nSupply Orders:{}\nCost:{}\n'''.format(detail[0], detail[1], detail[2]))
