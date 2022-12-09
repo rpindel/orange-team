@@ -1,5 +1,6 @@
 import create_tables
 import fill_tables
+import print_tables
 import reports
 import employee_time
 import supply_report
@@ -23,15 +24,15 @@ create_tables.foreign_key_constraints()
 #print_tables.print_tables()  # tentative name for this function
 while True:
     choice = input("Please Chose a report to look at. 'employee' for employee time, 'wine orders' for wine orders "
-                   "over 1200, 'supply report' for the last option or q to quit:\n ").lower()
+                   "over 1200, 'inventory' to see supplies on hand or q to quit:\n ").lower()
     print(choice)
     # Use an if-else statement to call the appropriate function
     if choice == 'employee':
-        employee_time.employee_time()
+        reports.employee_time()
     elif choice == 'wine orders':
-        wine_orders.wine_orders()
-    elif choice == 'supply report':
-        supply_report.supply_report()
+        reports.wine_orders()
+    elif choice == 'inventory':
+        reports.inventory()
     elif choice == 'q':
         print("Goodbye!")
         quit()
