@@ -2,16 +2,26 @@ import create_tables
 import fill_tables
 import print_tables
 import reports
+import employee_time
+import supply_report
+import wine_orders
+
+
+#import print_tables
+#import time
+#import reports
 
 # we make our functions in the other files and call them on this one
 # main.py needs to have the bacchus_wine_db_init.sql run first
 
 print("I will load and display the tables for you...")
+# Pause for two seconds for dramatic effect
+#time.sleep(2)
 # create_tables.drop_tables()
 create_tables.create_tables()
 fill_tables.fill_tables()
 create_tables.foreign_key_constraints()
-print_tables.print_tables()  # tentative name for this function
+#print_tables.print_tables()  # tentative name for this function
 while True:
     choice = input("Please Chose a report to look at. 'employee' for employee time, 'wine orders' for wine orders "
                    "over 1200, 'inventory' to see supplies on hand or q to quit:\n ").lower()
