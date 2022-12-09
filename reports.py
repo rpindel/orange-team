@@ -1,6 +1,4 @@
 import mysql.connector
-import os
-import subprocess
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -11,53 +9,50 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-# These Functions only work if the appropriate SQL script exists in the same folder as our python program
 def wine_orders():
-    # Set the location of the MySQL script
-    wine_orders_path = './wine_order_report.sql'
+    # Execute the script using the cursor
+    mycursor.execute(
+        "select w.name, w.onhand_quantity, wo.order_date, wo.wine_order_id"
+        " from wine w inner join wine_order_details wod on w.wine_id = wod.wine_id "
+        "inner join wine_order wo on wod.wine_order_id = wo.wine_order_id order by w.name")
 
-    # Check if the script exists
-    if os.path.exists(wine_orders_path):
-        # Run the MySQL script using the subprocess module
-        subprocess.call(
-            ['mysql', '-u', 'bacchus_user', '-p', 'mysqltest', '-h', 'localhost', 'bacchus_wine', '<'
-                , wine_orders_path])
-    else:
-        print('MySQL script not found.')
+    # Fetch and print the results
+    results = mycursor.fetchall()
+    for row in results:
+        print(
+            f"Wine Name: {row[0]}\nOnhand Quantity: {row[1]}\nOrder Date: {row[2]}\nWine Order ID: {row[3]}"
+        )
+        print("\n")
 
 
 def employee_time():
-    # Set the location of the MySQL script
-    employee_time_path = './employee_time_report.sql'
+    mycursor.execute(
+        'select first_name, last_name, etw.date, '
+        'timestampdiff(minute,etw.clock_in_shift,etw.clock_out_shift)/60 as "Total Shift (Hr)", '
+        'timestampdiff(minute,etw.clock_out_break,etw.clock_in_break) as "Break (Min)", '
+        'timestampdiff(minute,etw.clock_out_lunch,etw.clock_in_lunch) as"Lunch (Min)", '
+        '((timestampdiff(minute,etw.clock_in_shift,etw.clock_out_shift)) '
+        '-(timestampdiff(minute,etw.clock_out_break,etw.clock_in_break)) '
+        '-(timestampdiff(minute,etw.clock_out_lunch,etw.clock_in_lunch)))/60 as "Total Worked (Hr)" '
+        'from employee e '
+        'inner join employee_time_worked etw '
+        'on e.employee_id = etw.employee_id'
+    )
 
-    # Check if the script exists
-    if os.path.exists(employee_time_path):
-        # Run the MySQL script using the subprocess module
-        subprocess.call(
-            ['mysql', '-u', 'bacchus_user', '-p', 'mysqltest', '-h', 'localhost', 'bacchus_wine', '<',
-             employee_time_path])
-    else:
-        print('MySQL script not found.')
+    timeworked = mycursor.fetchall()
 
-
-def option_3():
-    """ this is a call an external sql script option
-    # Set the location of the MySQL script
-    script_path = './option_3.sql'
-
-    # Check if the script exists
-    if os.path.exists(script_path):
-        # Run the MySQL script using the subprocess module
-        subprocess.call(
-            ['mysql', '-u', 'bacchus_user', '-p', 'mysqltest', '-h', 'localhost', 'bacchus_wine', '<', script_path])
-    else:
-        print('MySQL script not found.') """
-
-    """ this is the 'pure' python option
-    
-    mycursor.execute(# this is where sql statement goes)
-    option_3_report = mycursor.fetchall()
-    for row in option_3_report:
+    for employee in timeworked:
         print(
-           # this is where print statement goes
-        )"""
+            '''First Name:{}\nLast Name:{}\nDate:{}\nHours Worked:{}\n'''.format(employee[0], employee[1], employee[2],
+                                                                                 employee[3]))
+
+
+def inventory():
+    mycursor.execute('select * from supplies')
+
+    details = mycursor.fetchall()
+
+    for detail in details:
+        print('''Supply ID: {}\nName: {}\nDescription: {}\nOn-Hand Quantity: {}\nUnit_Price: {}\nSupplier ID: {}
+        '''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5]))
+        # print("\n")
