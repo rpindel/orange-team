@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33bec8bd-a385-4c6b-ab48-038ab12598f2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0a9c5258-a6f4-443d-8bde-d5d904bd72d0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0a9c5258-a6f4-443d-8bde-d5d904bd72d0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/option_3.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/reports.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +54,7 @@
       <updated>1670475736893</updated>
       <workItem from="1670475739203" duration="4815000" />
       <workItem from="1670587305559" duration="6277000" />
+      <workItem from="1670603075955" duration="1509000" />
     </task>
     <servers />
   </component>
