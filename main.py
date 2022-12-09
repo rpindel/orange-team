@@ -8,10 +8,11 @@ import time
 
 # functions are in separate files and call them from main.py
 
-print("I will load and display the tables for you...")
+print("\n\nI will load and display the tables for you...\n\n")
 
 # Pause for two seconds for dramatic effect
-time.sleep(2)
+time.sleep(3)
+
 
 # create_tables.drop_tables()
 create_tables.create_tables()
@@ -29,7 +30,6 @@ print_tables.print_tables()
 while True:
     choice = input("Please Chose a report to look at. 'employee' for employee time, 'wine orders' for wine orders "
                    "over 1200, 'inventory' to see supplies on hand or q to quit:\n ").lower()
-    print(choice)
     # Use an if-else statement to call the appropriate function
     if choice == 'employee':
         reports.employee_time()

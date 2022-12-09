@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33bec8bd-a385-4c6b-ab48-038ab12598f2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0a9c5258-a6f4-443d-8bde-d5d904bd72d0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0a9c5258-a6f4-443d-8bde-d5d904bd72d0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="33bec8bd-a385-4c6b-ab48-038ab12598f2" name="Changes" comment="Main cleaned up and comments added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/reports.py" afterDir="false" />
@@ -54,8 +52,17 @@
       <updated>1670475736893</updated>
       <workItem from="1670475739203" duration="4815000" />
       <workItem from="1670587305559" duration="6277000" />
-      <workItem from="1670603075955" duration="1509000" />
+      <workItem from="1670603075955" duration="1835000" />
+      <workItem from="1670626069336" duration="1258000" />
     </task>
+    <task id="LOCAL-00001" summary="Main cleaned up and comments added.">
+      <created>1670604632478</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670604632478</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -71,6 +78,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Main cleaned up and comments added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Main cleaned up and comments added." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/print_tables_py$main.coverage" NAME="main Coverage Results" MODIFIED="1670480069943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
