@@ -59,7 +59,7 @@ def create_tables():
         # create supplies table
         ("CREATE TABLE supplies (Supply_ID INT NOT NULL, Name VARCHAR(25) NOT NULL, Description VARCHAR(45), "
          "Onhand_Quantity INT NOT NULL, Unit_Price DECIMAL(6,2) NOT NULL, Supplier_ID INT NOT NULL, "
-         "Supply_Order_ID INT NOT NULL, PRIMARY KEY(Supply_ID));"),
+         "PRIMARY KEY(Supply_ID));"),
         # create supply_order table
         ("CREATE TABLE supply_order (Supply_Order_ID INT NOT NULL, Total_Cost DECIMAL(10,2) NOT NULL, "
          "Order_Date DATETIME NOT NULL, Order_Method ENUM('Phone', 'Post', 'Online'), "
@@ -128,8 +128,6 @@ def foreign_key_constraints():
          "REFERENCES supplier(Supplier_ID);"),
         ("ALTER TABLE supplies ADD CONSTRAINT fk_supplies_supplier FOREIGN KEY(Supplier_ID)"
          "REFERENCES supplier(Supplier_ID);"),
-        ("ALTER TABLE supplies ADD CONSTRAINT fk_supplies_supply_order FOREIGN KEY(Supply_Order_ID) "
-         "REFERENCES supply_order(Supply_Order_ID);"),
         "ALTER TABLE wine ADD CONSTRAINT fk_wine_batch FOREIGN KEY(Batch_ID) REFERENCES batch(Batch_ID);",
         "ALTER TABLE batch ADD CONSTRAINT fk_batch_wine FOREIGN KEY(Wine_ID) REFERENCES wine(Wine_ID);",
         ("ALTER TABLE wine_order ADD CONSTRAINT fk_wine_order_distributor FOREIGN KEY(Distributor_ID) "

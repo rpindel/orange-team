@@ -29,16 +29,15 @@ def fill_tables():
     print(mycursor.rowcount, "rows were inserted into supplier table")
 
     # fill supplies table
-    supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID,"
-                "Supply_Order_ID)"
-                "VALUES (%s, %s, %s, %s, %s, %s, %s)")
+    supplies = ("INSERT INTO supplies (Supply_ID, Name, Description, Onhand_Quantity, Unit_Price, Supplier_ID) "
+                "VALUES (%s, %s, %s, %s, %s, %s)")
     values = [
-        (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1, 1111),
-        (2, 'Bottles', '750 ML', 254, 1.20, 1, 2222),
-        (3, 'Labels', 'Display Product on Bottle', 2455, 0.05, 4, 3333),
-        (4, 'Tubing', 'For Processing', 25, 25.00, 3, 4444),
-        (5, 'Vats', 'For Fermenting', 12, 2500.00, 3, 5555),
-        (6, 'Boxes', 'Six(6) Bottle Size', 1258, 2.00, 4, 6666)
+        (1, 'Corks', 'Environment Friendly', 1548, 0.25, 1),
+        (2, 'Bottles', '750 ML', 254, 1.20, 1),
+        (3, 'Labels', 'Display Product on Bottle', 2455, 0.05, 4),
+        (4, 'Tubing', 'For Processing', 25, 25.00, 3),
+        (5, 'Vats', 'For Fermenting', 12, 2500.00, 3),
+        (6, 'Boxes', 'Six(6) Bottle Size', 1258, 2.00, 4)
     ]
     mycursor.executemany(supplies, values)
     mydb.commit()
