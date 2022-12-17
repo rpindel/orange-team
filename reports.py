@@ -10,7 +10,6 @@ mycursor = mydb.cursor()
 
 
 def wine_orders():
-
     print("\n***WINE ORDER REPORT***\n")
     # Execute the script using the cursor
     mycursor.execute(
@@ -27,7 +26,6 @@ def wine_orders():
 
 
 def employee_time():
-
     print("\n***EMPLOYEE TIME REPORT***\n")
 
     mycursor.execute(
@@ -52,7 +50,6 @@ def employee_time():
 
 
 def inventory():
-
     print("\n***INVENTORY REPORT***\n")
 
     mycursor.execute('''select s.name, so.supply_order_id, so.total_cost, so.order_date,
@@ -64,4 +61,5 @@ def inventory():
     details = mycursor.fetchall()
 
     for detail in details:
-        print('''Supplier:{}\nSupply Orders:{}\nCost:{}\nOrder Date:{}\nEstimated Delivery:{}\nActual Delivery:{}\n'''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5]))
+        print('''Supplier:{}\nSupply Orders:{}\nCost:{}\nOrder Date:{}\nEstimated Delivery:{}\nActual Delivery:{}\nActual VS. Estimated Delivery: {} Days\n'''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5],
+                                                      detail[6]))
