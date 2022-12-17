@@ -36,7 +36,7 @@ print_tables.print_tables()
 # run the reports
 while True:
     choice = input("Please Chose a report to look at. 'employee' for employee time, 'wine orders' for wine orders "
-                   "over 1200, 'inventory' to see supplies on hand or q to quit:\n ").lower()
+                   "over 1200, 'supply' to see supply orders or q to quit:\n ").lower()
     # Use an if-else statement to call the appropriate function
     if choice == 'employee':
         reports.employee_time()
@@ -44,7 +44,7 @@ while True:
     elif choice == 'wine orders':
         reports.wine_orders()
         date_stamp()
-    elif choice == 'inventory':
+    elif choice == 'supply':
         reports.inventory()
         date_stamp()
     elif choice == 'q':

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="33bec8bd-a385-4c6b-ab48-038ab12598f2" name="Changes" comment="Main cleaned up and comments added.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/reports.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +54,7 @@
       <workItem from="1670587305559" duration="6277000" />
       <workItem from="1670603075955" duration="1835000" />
       <workItem from="1670626069336" duration="1258000" />
-      <workItem from="1671239130798" duration="3173000" />
+      <workItem from="1671239130798" duration="4320000" />
     </task>
     <task id="LOCAL-00001" summary="Main cleaned up and comments added.">
       <created>1670604632478</created>
@@ -86,6 +87,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/print_tables_py$main.coverage" NAME="main Coverage Results" MODIFIED="1670480069943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/orange_team$main.coverage" NAME="main Coverage Results" MODIFIED="1670592971592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/reports_py$main.coverage" NAME="main Coverage Results" MODIFIED="1671242014872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/reports_py$main.coverage" NAME="main Coverage Results" MODIFIED="1671244501199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
