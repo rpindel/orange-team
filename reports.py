@@ -45,7 +45,7 @@ def employee_time():
 
     for employee in timeworked:
         print(
-            '''First Name:{}\nLast Name:{}\nDate:{}\nHours Worked:{}\n'''.format(employee[0], employee[1], employee[2],
+            '''First Name: {}\nLast Name: {}\nDate: {}\nHours Worked: {}\n'''.format(employee[0], employee[1], employee[2],
                                                                                  employee[3]))
 
 
@@ -61,5 +61,5 @@ def inventory():
     details = mycursor.fetchall()
 
     for detail in details:
-        print('''Supplier:{}\nSupply Order ID:{}\nCost:${}\nOrder Date:{}\nEstimated Delivery:{}\nActual Delivery:{}\nActual VS. Estimated Delivery: {} Days\n'''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5],
+        print('''Supplier: {}\nSupply Order ID: {}\nCost: ${}\nOrder Date: {}\nEstimated Delivery: {}\nActual Delivery: {}\nActual VS. Estimated Delivery: {} Days\n'''.format(detail[0], detail[1], detail[2], detail[3], detail[4], detail[5],
                                                       detail[6]))
